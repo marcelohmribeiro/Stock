@@ -89,3 +89,7 @@
     background-color: #222;
     color: #ff3333;
 }
+
+.qr_code {
+    display: flex;
+}

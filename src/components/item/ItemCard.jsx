@@ -2,6 +2,7 @@ import styles from './ItemCard.module.css'
 // Bibliotecas
 import { Link } from 'react-router-dom'
 import { FaTrash, FaEdit } from "react-icons/fa"
+import QRCode from 'react-qr-code';
 
 function ItemCard({ id, name, budget, category, desc, handleRemove }) {
 
@@ -24,6 +25,13 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
             <p>
                 <span>Descrição:</span> {desc}
             </p>
+            <div className={styles.qr_code}>
+                <QRCode
+                    value={`http://localhost:5000/itens/${id}`}
+                    target='_blank'
+                    style={{ height: "auto", maxWidth: "100%", width: "45%", margin: "auto", cursor: "pointer" }}
+                />
+            </div>
             <div className={styles.item_card_actions}>
                 <Link to={`/item/${id}`}>
                     <FaEdit /> Editar

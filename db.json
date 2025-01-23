@@ -1,16 +1,5 @@
 {
-  "itens": [
-    {
-      "id": "8e4d",
-      "name": "corrente",
-      "budget": "231",
-      "desc": "ouro 12k | 20cm",
-      "category": {
-        "id": "2",
-        "name": "Acessório"
-      }
-    }
-  ],
+  "itens": [],
   "categories": [
     {
       "id": "1",

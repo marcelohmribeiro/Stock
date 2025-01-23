@@ -1,5 +1,6 @@
 .item_container {
-    padding: 2em;
+    padding: auto;
+    padding: 2em 0;
 }
 
 .title_container {

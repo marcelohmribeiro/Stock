@@ -92,4 +92,39 @@
 
 .qr_code {
     display: flex;
+    flex-direction: column;
+}
+
+.qr_code a {
+    padding-bottom: 8px;
+    text-align: center;
+    padding-top: 0.4em;
+    text-decoration: none;
+    color: #222;
+}
+
+.QRdownload {
+    border: 1px solid #222;
+    padding: 0.4em;
+    margin: auto;
+    margin-top: 0.4em;
+    border-radius: 10px;
+}
+
+.QRdownload:hover {
+    background-color: #222;
+    color: #ffbb33;
+    transition: 0.5s;
+}
+
+.btn {
+    border: 1px solid black;
+    padding: 0.4em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+    transition: 0.3s;
 }

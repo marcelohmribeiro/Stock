@@ -1,0 +1,18 @@
+.footer {
+    background-color: #222;
+    text-align: center;
+    padding: 1.6vw;
+}
+
+.footer svg {
+    color: white;
+    cursor: pointer;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.footer svg:hover {
+    color: #D2A679;
+}

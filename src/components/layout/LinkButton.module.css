@@ -1,0 +1,16 @@
+.btn {
+    background-color: #222;
+    color: #fff;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.911);
+}
+
+.btn:hover {
+    transition: 0.3s;
+    box-shadow: 1px 1px 5px #6b503c;
+    background: linear-gradient(to right, #A67B5B, #D2A679);
+    color: white;
+    transform: scale(1.05);
+}

@@ -1,0 +1,47 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #222;
+    padding: 16px;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.item {
+    position: relative;
+    margin-right: 16px;
+}
+
+.item a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 0;
+}
+
+.item a:hover {
+    color: #D2A679;
+    transition: 0.2s;
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #D2A679;
+    transition: 0.2s ease;
+}
+
+.item:hover::after {
+    width: 100%;
+}
+
+img {
+    width: 50px;
+}

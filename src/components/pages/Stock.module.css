@@ -1,0 +1,22 @@
+.item_container {
+    padding: 2em;
+}
+
+.title_container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.title_container p {
+    background-color: #222;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.9);
+    color: white;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.title_container span {
+    color: gold;
+}

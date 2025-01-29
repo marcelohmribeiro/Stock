@@ -1,0 +1,78 @@
+{
+  "itens": [
+    {
+      "id": "20a3",
+      "name": "corrente",
+      "desc": "ouro 12k | 20cm",
+      "budget": "1200",
+      "category": {
+        "id": "2",
+        "name": "Acessório"
+      }
+    },
+    {
+      "id": "2295",
+      "name": "Jordan",
+      "budget": "250",
+      "desc": "cor: preto com detalhes vermelhos",
+      "category": {
+        "id": "3",
+        "name": "Calçado"
+      }
+    },
+    {
+      "id": "00c1",
+      "name": "camisa",
+      "budget": "100",
+      "desc": "lisa | cor: cinza | algodão",
+      "category": {
+        "id": "1",
+        "name": "Roupa"
+      }
+    },
+    {
+      "id": "fc79",
+      "name": "tênis",
+      "budget": "180",
+      "desc": "cor: preto | tamanho: 42",
+      "category": {
+        "id": "3",
+        "name": "Calçado"
+      }
+    },
+    {
+      "id": "3e33",
+      "name": "bolsa",
+      "budget": "90",
+      "desc": "cor: vermelha | couro",
+      "category": {
+        "id": "2",
+        "name": "Acessório"
+      }
+    },
+    {
+      "id": "a24d",
+      "name": "escapulário",
+      "budget": "80",
+      "desc": "prata",
+      "category": {
+        "id": "2",
+        "name": "Acessório"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Roupa"
+    },
+    {
+      "id": "2",
+      "name": "Acessório"
+    },
+    {
+      "id": "3",
+      "name": "Calçado"
+    }
+  ]
+}

@@ -15,7 +15,7 @@ function Item() {
 
     // Show Card
     useEffect(() => {
-        fetch(`http://localhost:5000/itens/${id}`, {
+        fetch(`http://localhost:8081/itens/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ function Item() {
 
     // Edit Card
     function editCard(item) {
-        fetch(`http://localhost:5000/itens/${item.id}`, {
+        fetch(`http://localhost:8081/itens/${item.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

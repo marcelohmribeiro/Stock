@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "yarn --cwd front-end dev",
-    "db": "yarn --cwd database db"
-  }
+    "dev": "yarn --cwd front-end dev"
+  },
+  "dependencies": {}
 }

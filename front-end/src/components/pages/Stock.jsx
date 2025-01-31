@@ -22,7 +22,7 @@ function Stock() {
 
     // Show Cards
     useEffect(() => {
-        fetch('http://localhost:5000/itens', {
+        fetch('http://localhost:8081/itens', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function Stock() {
 
     // Excluir Item
     function removeItem(id) {
-        fetch(`http://localhost:5000/itens/${id}`, {
+        fetch(`http://localhost:8081/itens/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

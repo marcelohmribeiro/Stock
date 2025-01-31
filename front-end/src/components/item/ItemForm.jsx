@@ -13,7 +13,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
 
     // Pegando as categorias existentes no DataBase
     useEffect(() => {
-        fetch('http://localhost:5000/categories', {
+        fetch('http://localhost:8081/categories', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,8 +37,10 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
     }
 
     function handleCategory(e) {
+        const selectedCategoryId = e.target.value // igualando os ID
         setItem({
             ...item,
+            categoryId: selectedCategoryId,
             category: {
                 id: e.target.value,
                 name: e.target.options[e.target.selectedIndex].text,
@@ -77,7 +79,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 text="Selecione a categoria"
                 options={categories}
                 handleOnChange={handleCategory}
-                value={item.category ? item.category.id : ''}
+                value={item.category ? item.categoryId : ''}
             />
             <SubmitButton text={btnText} />
         </form>

@@ -17,7 +17,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
     const [itemCard, setItemCard] = useState(false)
 
     function HandleGenerateQRCode() {
-        QRCodeLink.toDataURL(`http://localhost:5000/itens/${id}`, {
+        QRCodeLink.toDataURL(`http://localhost:8081/itens/${id}`, {
             width: 600,
             margin: 3,
         }, function (err, url) {
@@ -57,9 +57,9 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 </div>
             ) : (
                 <div className={styles.qr_code}>
-                    <a href={`http://localhost:5000/itens/${id}`} target='_blank'>
+                    <a href={`http://localhost:8081/itens/${id}`} target='_blank'>
                         <QRCode
-                            value={`http://localhost:5000/itens/${id}`}
+                            value={`http://localhost:8081/itens/${id}`}
                             style={{ height: "auto", maxWidth: "100%", width: "45%" }}
                         />
                     </a>

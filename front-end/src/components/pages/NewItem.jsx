@@ -10,7 +10,7 @@ function NewItem() {
     const navigate = useNavigate()
     
     function createPost(item) {
-        fetch('http://localhost:5000/itens', {
+        fetch('http://localhost:8081/itens', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

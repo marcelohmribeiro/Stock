@@ -24,18 +24,7 @@
 
 .item a:hover {
     color: #D2A679;
-    transition: 0.2s;
-}
-
-.item::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 0;
-    height: 2px;
-    background-color: #D2A679;
-    transition: 0.2s ease;
+    transition: 0.5s;
 }
 
 .item:hover::after {
@@ -43,5 +32,5 @@
 }
 
 img {
-    width: 50px;
+    width: 70px;
 }

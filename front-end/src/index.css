@@ -12,3 +12,10 @@ body,
   height: 100vh;
   width: 100vw;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: block;
+    background-image: none;
+  }
+}

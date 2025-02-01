@@ -1,6 +1,6 @@
 // Páginas
 import styles from './NavBar.module.css'
-import logo from '../img/logo.png'
+import logo from '../img/logo-voar-escuro_orig.png'
 import Container from './Container'
 // Bibliotecas
 import { Link } from 'react-router-dom'
@@ -11,7 +11,7 @@ function NavBar() {
         <nav className={styles.navbar}>
             <Container>
                 <Link to="/">
-                    <img src={logo} alt="logo_img" />
+                    <img src={logo} alt="associacao-voar-logo" />
                 </Link>
                 <ul className={styles.list}>
                     <li className={styles.item}>

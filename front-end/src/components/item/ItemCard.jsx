@@ -57,12 +57,12 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 </div>
             ) : (
                 <div className={styles.qr_code}>
-                    <a href={`http://localhost:8081/itens/${id}`} target='_blank'>
+                    <Link to={`/item/${id}`}>
                         <QRCode
-                            value={`http://localhost:8081/itens/${id}`}
+                            value={`http://localhost:5173/item/${id}`}
                             style={{ height: "auto", maxWidth: "100%", width: "45%" }}
                         />
-                    </a>
+                    </Link>
                     <a className={styles.QRdownload} onClick={HandleGenerateQRCode} href={qrcode} download={`${name}-qrcode.png`}><FaDownload /></a>
                 </div>
             )}

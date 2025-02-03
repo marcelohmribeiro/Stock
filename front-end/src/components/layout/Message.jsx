@@ -7,7 +7,7 @@ function Message({ type, msg }) {
 
     const [visible, setVisible] = useState(false)
 
-    // Show Message
+    // Mostrar Mensagem
     useEffect(() => {
         if (!msg) {
             setVisible(false)

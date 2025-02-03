@@ -93,5 +93,5 @@ app.patch('/itens/:id', async (req, res) => {
 })
 
 app.listen(8081, function () {
-    console.log("Servidor rodando na url http://localhost:8081")
+    console.log("Servidor rodando em http://localhost:8081")
 })

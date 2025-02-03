@@ -20,7 +20,7 @@ function Stock() {
         message = location.state.message
     }
 
-    // Show Cards
+    // Mostrar Cards
     useEffect(() => {
         fetch('http://localhost:8081/itens', {
             method: 'GET',

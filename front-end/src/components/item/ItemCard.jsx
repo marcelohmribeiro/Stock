@@ -16,6 +16,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
     const [qrcode, setQRCode] = useState('')
     const [itemCard, setItemCard] = useState(false)
 
+    // Formatação do QR Code
     function HandleGenerateQRCode() {
         QRCodeLink.toDataURL(`http://localhost:8081/itens/${id}`, {
             width: 600,
@@ -44,12 +45,12 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 <span>Descrição:</span> {desc}
             </p>
             <button onClick={item_card} className={styles.btn}>
-                {!itemCard ? `Gerar QR` : 'Voltar'}
+                {!itemCard ? 'Gerar QR' : 'Voltar'}
             </button>
             {!itemCard ? (
                 <div className={styles.item_card_actions}>
                     <Link to={`/item/${id}`}>
-                        <FaEdit /> Editar
+                    <FaEdit /> Editar
                     </Link>
                     <button onClick={remove}>
                         <FaTrash /> Excluir

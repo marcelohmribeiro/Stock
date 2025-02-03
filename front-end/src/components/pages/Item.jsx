@@ -13,7 +13,7 @@ function Item() {
     const [itemForm, setItemForm] = useState(false)
     const navigate = useNavigate()
 
-    // Show Card
+    // Mostrar Card
     useEffect(() => {
         fetch(`http://localhost:8081/itens/${id}`, {
             method: 'GET',
@@ -27,7 +27,7 @@ function Item() {
             })
     }, [id])
 
-    // Edit Card
+    // Editar Card
     function editCard(item) {
         fetch(`http://localhost:8081/itens/${item.id}`, {
             method: 'PATCH',

@@ -8,22 +8,28 @@ import { useNavigate } from 'react-router-dom'
 function NewItem() {
 
     const navigate = useNavigate()
-    
-    function createPost(item) {
+
+    async function createPost(item) {
+        const formData = new FormData()
+
+        // Atribuindo os valores com o formData
+        formData.append("name", item.name)
+        formData.append("budget", item.budget)
+        formData.append("desc", item.desc)
+        formData.append("categoryId", item.categoryId)
+        formData.append("image", item.image)
+        
+        // Criando o Item
         fetch('http://localhost:8081/itens', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(item),
+            body: formData,
         })
             .then((resp) => resp.json())
             .then((data) => {
-                console.log(data)
-                const state = { message: "Item criado com sucesso!" }
-                navigate('/stock', { state })
+                console.log("Item criado:", data)
+                navigate('/stock', { state: { message: "Item criado com sucesso!" } })
             })
-            .catch((err) => console.log(err))
+            .catch((err) => console.error(err))
     }
 
     return (

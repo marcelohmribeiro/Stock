@@ -3,6 +3,7 @@ import styles from './ItemForm.module.css'
 import Input from '../form/Input'
 import Select from '../form/Select'
 import SubmitButton from '../form/SubmitButton'
+import Upload from '../form/Upload'
 // Bibliotecas
 import { useState, useEffect } from 'react'
 
@@ -48,6 +49,10 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
         })
     }
 
+    function handleImage(file) {
+        setItem({ ...item, image: file })
+    }
+
     return (
         <form onSubmit={submit} className={styles.form}>
             <Input
@@ -81,6 +86,11 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 handleOnChange={handleCategory}
                 value={item.category ? item.categoryId : ''}
             />
+            <Upload
+                text="Imagem do produto (opcional)"
+                handleOnChange={handleImage}
+            />
+
             <SubmitButton text={btnText} />
         </form>
     )

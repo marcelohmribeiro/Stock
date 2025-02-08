@@ -21,6 +21,12 @@ const Item = db.sequelize.define('itens', {
     },
     categoryId: {
         type: db.Sequelize.INTEGER
+    },
+    image: {
+        type: db.Sequelize.STRING
+    },
+    imageName: {
+        type: db.Sequelize.STRING
     }
 }, {
     timestamps: false

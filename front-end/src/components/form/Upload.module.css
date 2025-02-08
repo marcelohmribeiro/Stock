@@ -1,0 +1,106 @@
+.container {
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.dropzone p {
+    text-align: center;
+    padding: 12px;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    background-color: white;
+    color: #999;
+}
+
+.dropzone label {
+    margin-bottom: 0.6em;
+    font-weight: bold;
+}
+
+.img_container {
+    width: 600px;
+    height: 400px;
+}
+
+.dropzone .success {
+    border-color: #78e5d5;
+    color: #11A998;
+}
+
+.dropzone .error {
+    border-color: #e57878;
+    color: red;
+}
+
+.fileInfo {
+    display: flex;
+    align-items: center;
+}
+
+.fileInfo li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444;
+}
+
+.fileInfo span {
+    font-size: 12px;
+    color: #9c9c9c;
+    margin-top: 15px;
+
+}
+
+.fileInfo button {
+    border: 0;
+    background: transparent;
+    color: #e57878;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.container ul {
+    margin-top: 20px;
+}
+
+.fileInfo div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container ul {
+    list-style: none;
+}
+
+.preview {
+    width: 36px;
+    height: 64px;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-right: 10px;
+}
+
+.container .message {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 11%;
+    left: 50%;
+    width: 20%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    text-align: center;
+}

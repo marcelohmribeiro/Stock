@@ -15,26 +15,44 @@ function Item() {
 
     // Mostrar Card
     useEffect(() => {
-        fetch(`http://localhost:8081/itens/${id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setItem(data)
-            })
+        const fetchData = async () => {
+            try {
+                const resp = await fetch(`http://localhost:8081/itens/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+
+                const data = await resp.json()
+                const imageUrl = `http://localhost:8081${data.image}`
+
+                setItem({
+                    ...data,
+                    imageUrl: imageUrl,
+                })
+            } catch (error) {
+                console.error('Erro ao carregar item:', error)
+            }
+        }
+
+        fetchData()
     }, [id])
 
     // Editar Card
     function editCard(item) {
+        const formData = new FormData()
+
+        // Atribuindo os valores com o formData
+        formData.append('name', item.name)
+        formData.append('budget', item.budget)
+        formData.append('desc', item.desc)
+        formData.append('categoryId', item.categoryId)
+        formData.append('image', item.image)
+
         fetch(`http://localhost:8081/itens/${item.id}`, {
             method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(item),
+            body: formData,
         })
             .then((resp) => resp.json())
             .then((data) => {
@@ -42,6 +60,9 @@ function Item() {
                 setItemForm(!itemForm)
                 const state = { message: "Item atualizado com sucesso!" }
                 navigate('/stock', { state })
+            })
+            .catch(error => {
+                console.error("Erro ao editar o item:", error)
             })
     }
 
@@ -60,15 +81,24 @@ function Item() {
                     </button>
                     {!itemForm ? (
                         <div className={styles.form}>
-                            <p>
-                                <span>Categoria: </span> {item.category?.name}
-                            </p>
-                            <p>
-                                <span>Valor: </span> R${parseFloat(item.budget).toFixed(2)}
-                            </p>
-                            <p>
-                                <span>Descrição: </span> {item.desc}
-                            </p>
+                            {item.imageName && (
+                                <img
+                                    src={item.imageUrl}
+                                    alt="Imagem carregada"
+                                    className={styles.itemImage}
+                                />
+                            )}
+                            <div className={styles.infoContainer}>
+                                <p>
+                                    <span>Categoria: </span> {item.category?.name}
+                                </p>
+                                <p>
+                                    <span>Valor: </span> R${parseFloat(item.budget).toFixed(2)}
+                                </p>
+                                <p>
+                                    <span>Descrição: </span> {item.desc}
+                                </p>
+                            </div>
                         </div>
                     ) : (
                         <div className={styles.form}>

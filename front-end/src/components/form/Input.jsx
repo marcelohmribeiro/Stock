@@ -12,6 +12,7 @@ function Input({ type, text, name, placeholder, handleOnChange, value }) {
                 onChange={handleOnChange}
                 value={value}
                 required
+                autoComplete='off'
                 maxLength={70}
             />
         </div>

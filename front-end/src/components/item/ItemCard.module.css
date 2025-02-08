@@ -52,6 +52,10 @@
     background-color: red;
 }
 
+.category_text .outros {
+    background-color: #222;
+}
+
 .item_card_actions {
     margin-top: 1.2em;
     display: flex;

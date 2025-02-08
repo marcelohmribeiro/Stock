@@ -21,7 +21,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
         QRCodeLink.toDataURL(`http://localhost:8081/itens/${id}`, {
             width: 600,
             margin: 3,
-        }, function (err, url) {
+        }, function (url) {
             setQRCode(url)
         })
     }

@@ -2,8 +2,8 @@ import styles from './Upload.module.css'
 import Message from '../layout/Message'
 // Bibliotecas
 import Dropzone from 'react-dropzone'
-import { useState, useEffect } from 'react'
-import { MdCheckCircle, MdLink } from 'react-icons/md'
+import { useState } from 'react'
+import { MdCheckCircle, MdError, MdLink } from 'react-icons/md'
 
 function Upload({ handleOnChange, text }) {
 
@@ -11,36 +11,26 @@ function Upload({ handleOnChange, text }) {
     const [fileInfo, setFileInfo] = useState(null)
     const [fileMessage, setFileMessage] = useState('')
 
-    useEffect(() => {
-        if (file) {
-            setFileInfo({
-                name: file.name,
-                size: file.size,
-                generatedName: file.filename,
-                uploaded: true,
-                url: URL.createObjectURL(file)
-            })
-        }
-    }, [file])
-
     const handleUpload = (acceptedFiles) => {
         const maxFileSize = 2 * 1024 * 1024
         const selectedFile = acceptedFiles[0]
 
-        if (selectedFile.size > maxFileSize) {
-            setFile(null)
-            setFileInfo(null)
-            setFileMessage('Arquivo não suportado!')
-        } else {
-            if (selectedFile) {
-                setFile(selectedFile)
-                setFileInfo({
-                    name: selectedFile.name,
-                    size: selectedFile.size,
-                    uploaded: false,
-                    url: URL.createObjectURL(selectedFile)
-                })
-                handleOnChange(selectedFile) // Passando o file para o componente pai
+        if (selectedFile) {
+            const isValid = selectedFile.size <= maxFileSize
+
+            setFile(selectedFile)
+            setFileInfo({
+                name: selectedFile.name,
+                size: selectedFile.size,
+                uploaded: isValid,
+                error: !isValid,
+                url: URL.createObjectURL(selectedFile)
+            })
+
+            if (isValid) {
+                handleOnChange(selectedFile) // Passando o file para o componente pai  
+            } else {
+                setFileMessage('Arquivo não suportado!')
             }
         }
     }
@@ -86,11 +76,6 @@ function Upload({ handleOnChange, text }) {
                                 {...getInputProps()}
                             />
                             {renderMessage(isDragActive, isDragReject)}
-                            {fileMessage && (
-                                <div className={styles.message}>
-                                <Message type="error" msg={fileMessage} />
-                                </div>
-                            )}
                         </div>
                     )}
                 </Dropzone>
@@ -104,10 +89,18 @@ function Upload({ handleOnChange, text }) {
                                 <strong>{fileInfo.name}</strong>
                                 <span>{formatFileSize(fileInfo.size)}<button type='button' onClick={removeFile}>Excluir</button></span>
                             </div>
-                            <a href={fileInfo.url} target='_blank'>
-                                <MdLink style={{ marginRight: 8 }} size={24} color='#222' />
-                            </a>
+                            {fileInfo.url && (
+                                <a href={fileInfo.url} target='_blank'>
+                                    <MdLink style={{ marginRight: 8 }} size={24} color='#222' />
+                                </a>
+                            )}
                             {fileInfo.uploaded && <MdCheckCircle size={24} color='#78ed5f' />}
+                            {fileMessage && (
+                                <div className={styles.message}>
+                                    <Message type="error" msg={fileMessage} />
+                                </div>
+                            )}
+                            {fileInfo.error && <MdError size={24} color='#e57878' />}
                         </div>
                     </li>
                 </ul>

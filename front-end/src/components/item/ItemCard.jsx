@@ -3,7 +3,7 @@ import styles from './ItemCard.module.css'
 import { Link } from 'react-router-dom'
 import { FaTrash, FaEdit, FaDownload } from "react-icons/fa"
 import { useState } from 'react'
-import QRCode from 'react-qr-code';
+import QRCode from 'react-qr-code'
 import QRCodeLink from 'qrcode'
 
 function ItemCard({ id, name, budget, category, desc, handleRemove }) {
@@ -16,14 +16,17 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
     const [qrcode, setQRCode] = useState('')
     const [itemCard, setItemCard] = useState(false)
 
-    // Formatação do QR Code
-    function HandleGenerateQRCode() {
-        QRCodeLink.toDataURL(`http://localhost:8081/itens/${id}`, {
-            width: 600,
-            margin: 3,
-        }, function (url) {
-            setQRCode(url)
-        })
+    // Formatação do QR Code para download
+    async function HandleGenerateQRCode() {
+        try {
+            const url = await QRCodeLink.toDataURL(`http://localhost:8081/itens/${id}`, {
+                width: 600,
+                margin: 3,
+            })
+            setQRCode(url) // Atualiza o estado com o URL gerado
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     function item_card() {
@@ -50,7 +53,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
             {!itemCard ? (
                 <div className={styles.item_card_actions}>
                     <Link to={`/item/${id}`}>
-                    <FaEdit /> Editar
+                        <FaEdit /> Editar
                     </Link>
                     <button onClick={remove}>
                         <FaTrash /> Excluir

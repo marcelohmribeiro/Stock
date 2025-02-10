@@ -3,7 +3,7 @@ import Message from '../layout/Message'
 // Bibliotecas
 import Dropzone from 'react-dropzone'
 import { useState, useEffect } from 'react'
-import { MdCheckCircle, MdError, MdLink } from 'react-icons/md'
+import { MdCheckCircle, MdLink } from 'react-icons/md'
 
 function Upload({ handleOnChange, text }) {
 
@@ -108,7 +108,6 @@ function Upload({ handleOnChange, text }) {
                                 <MdLink style={{ marginRight: 8 }} size={24} color='#222' />
                             </a>
                             {fileInfo.uploaded && <MdCheckCircle size={24} color='#78ed5f' />}
-                            {fileInfo.error && <MdError size={24} color='#e57878' />}
                         </div>
                     </li>
                 </ul>

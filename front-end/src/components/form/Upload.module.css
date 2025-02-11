@@ -33,11 +33,13 @@
 }
 
 .dropzone .success {
+    transition: 0.3s;
     border-color: #78e5d5;
     color: #11A998;
 }
 
 .dropzone .error {
+    transition: 0.3s;
     border-color: #e57878;
     color: red;
 }

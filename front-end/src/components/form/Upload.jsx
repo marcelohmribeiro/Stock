@@ -7,18 +7,16 @@ import { MdCheckCircle, MdError, MdLink } from 'react-icons/md'
 
 function Upload({ handleOnChange, text }) {
 
-    const [file, setFile] = useState(null)
     const [fileInfo, setFileInfo] = useState(null)
     const [fileMessage, setFileMessage] = useState('')
+    const maxFileSize = 2 * 1024 * 1024
 
     const handleUpload = (acceptedFiles) => {
-        const maxFileSize = 2 * 1024 * 1024
         const selectedFile = acceptedFiles[0]
+
 
         if (selectedFile) {
             const isValid = selectedFile.size <= maxFileSize
-
-            setFile(selectedFile)
             setFileInfo({
                 name: selectedFile.name,
                 size: selectedFile.size,
@@ -28,14 +26,14 @@ function Upload({ handleOnChange, text }) {
             })
 
             if (isValid) {
-                handleOnChange(selectedFile) // Passando o file para o componente pai  
+                handleOnChange(selectedFile) // Passando o file para o componente pai
             } else {
                 setFileMessage('Arquivo não suportado!')
             }
         }
     }
 
-    // formatação do tamanho do arquivo
+    // Formatação do tamanho do arquivo
     const formatFileSize = (size) => {
         if (size < 1024) {
             return `${size} bytes`
@@ -47,8 +45,8 @@ function Upload({ handleOnChange, text }) {
     }
 
     const removeFile = () => {
-        setFile(null)
         setFileInfo(null)
+        handleOnChange(null)
         setFileMessage('')
     }
 
@@ -57,14 +55,15 @@ function Upload({ handleOnChange, text }) {
             return <p>Arraste o arquivo aqui...</p>
         }
         if (isDragReject) {
-            return <p className={styles.error}>Arquivo não suportado</p>
+            return <p className={styles.error}>Arquivo não permitido</p>
         }
         return <p className={styles.success}>Solte o arquivo aqui</p>
     }
 
     return (
         <div className={styles.container}>
-            {!file && (
+            {fileMessage && <Message type="error" msg={fileMessage} />}
+            {!fileInfo && (
                 <Dropzone onDrop={handleUpload} accept={{ 'image/*': [] }} >
                     {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
                         <div
@@ -80,14 +79,18 @@ function Upload({ handleOnChange, text }) {
                     )}
                 </Dropzone>
             )}
-            {file && (
+            {fileInfo && (
                 <ul>
                     <li>
                         <div className={styles.fileInfo}>
                             <img className={styles.preview} src={fileInfo.url} />
                             <div>
                                 <strong>{fileInfo.name}</strong>
-                                <span>{formatFileSize(fileInfo.size)}<button type='button' onClick={removeFile}>Excluir</button></span>
+                                <span>
+                                    {fileInfo.error && <div className={styles.sizeFalse}>{formatFileSize(fileInfo.size)}</div>}
+                                    {fileInfo.uploaded && <div className={styles.sizeCheck}>{formatFileSize(fileInfo.size)}</div>}
+                                    <button type='button' onClick={removeFile}>Excluir</button>
+                                </span>
                             </div>
                             {fileInfo.url && (
                                 <a href={fileInfo.url} target='_blank'>
@@ -95,11 +98,6 @@ function Upload({ handleOnChange, text }) {
                                 </a>
                             )}
                             {fileInfo.uploaded && <MdCheckCircle size={24} color='#78ed5f' />}
-                            {fileMessage && (
-                                <div className={styles.message}>
-                                    <Message type="error" msg={fileMessage} />
-                                </div>
-                            )}
                             {fileInfo.error && <MdError size={24} color='#e57878' />}
                         </div>
                     </li>

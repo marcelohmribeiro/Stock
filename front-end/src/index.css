@@ -9,10 +9,3 @@ html, body, #root {
   background-color: #efefef;
   height: 100%;
 }
-
-@media screen and (max-width: 768px) {
-  .container {
-    display: block;
-    background-image: none;
-  }
-}

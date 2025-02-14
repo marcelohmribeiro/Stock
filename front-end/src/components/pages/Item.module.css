@@ -5,6 +5,8 @@
   margin: auto;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.274);
+  width: 100%;
+  max-width: 1200px;
 }
 
 .item_details h1,
@@ -33,6 +35,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .btn {
@@ -46,6 +49,8 @@
   max-height: 40px;
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.911);
+  width: 100%;
+  max-width: 100px;
 }
 
 .btn:hover {
@@ -57,10 +62,30 @@
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .itemImage {
   border: 2px solid #222;
   border-radius: 5px;
-  width: 150px;
+  width: 100%;
+  max-width: 150px;
+  margin-bottom: 1em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .item_details {
+    padding: 1em;
+  }
+
+  .details_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .itemImage {
+    width: 100%;
+    max-width: 200px;
+  }
 }

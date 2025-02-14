@@ -137,3 +137,11 @@
     color: #fff;
     transition: 0.3s;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .item_card {
+        width: 100%;
+        margin: 1em 0;
+    }
+}

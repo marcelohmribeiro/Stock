@@ -1,5 +1,6 @@
 .container {
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
@@ -17,4 +18,16 @@
 .column {
     flex-direction: column;
     justify-content: flex-start;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 0 0.5rem;  
+    }
+
+    .min-height {
+        min-height: 60%;
+    }
 }

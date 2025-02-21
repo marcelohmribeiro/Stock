@@ -1,8 +1,5 @@
 {
   "name": "project",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "dev": "yarn --cwd front-end dev"
-  }
+  "main": "index.js"
 }

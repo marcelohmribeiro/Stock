@@ -103,7 +103,7 @@ app.patch('/itens/:id', multer(multerConfig).single('image'), async (req, res) =
             return res.status(404).json({ message: 'Item não encontrado' })
         }
 
-        const updatedData = {...req.body}
+        const updatedData = { ...req.body }
         // Verificando se chegou um novo arquivo
         if (req.file) {
             // Deletando o arquivo antigo
@@ -124,6 +124,5 @@ app.patch('/itens/:id', multer(multerConfig).single('image'), async (req, res) =
     }
 })
 
-app.listen(8081, function () {
-    console.log("Servidor rodando em http://localhost:8081")
-})
+const PORT = process.env.PORT || 8081
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))

@@ -124,5 +124,5 @@ app.patch('/itens/:id', multer(multerConfig).single('image'), async (req, res) =
     }
 })
 
-const PORT = process.env.PORT || 8081
+const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))

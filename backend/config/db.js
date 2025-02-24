@@ -8,6 +8,10 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     dialect: "mysql",
 })
 
+sequelize.authenticate()
+    .then(() => console.log("Conectado"))
+    .catch(err => console.error("Erro ao conectar:", err))
+
 module.exports = {
     Sequelize: Sequelize,
     sequelize: sequelize

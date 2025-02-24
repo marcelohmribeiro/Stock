@@ -6,6 +6,7 @@ const multer = require('multer')
 const multerConfig = require('./config/multer')
 const fs = require('fs')
 const { Item, Category } = require('./models/Item')
+const PORT = process.env.PORT
 
 // Liberando conexão com o front-end
 app.use(cors({
@@ -124,5 +125,4 @@ app.patch('/itens/:id', multer(multerConfig).single('image'), async (req, res) =
     }
 })
 
-const PORT = process.env.PORT
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))

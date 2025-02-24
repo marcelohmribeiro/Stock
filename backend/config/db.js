@@ -2,10 +2,14 @@ const Sequelize = require('sequelize')
 require("dotenv").config()
 
 // Conexão com o banco de dados
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+const sequelize = new Sequelize({
     host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     port: process.env.DB_PORT,
-    dialect: "mysql",
+    dialect: 'mysql',
+    dialectModule: require('mysql2'),
 })
 
 sequelize.authenticate()

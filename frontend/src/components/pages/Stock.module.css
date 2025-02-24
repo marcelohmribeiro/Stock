@@ -1,11 +1,14 @@
 .item_container {
-    padding: auto;
     padding: 2em 0;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .title_container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 2em;
 }
 
@@ -20,4 +23,23 @@
 
 .title_container span {
     color: gold;
+}
+
+@media (max-width: 768px) {
+    .item_container {
+        width: 90%;
+        padding: 1.5em;
+    }
+
+    .title_container {
+        gap: 10px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .title_container p {
+        font-size: 0.85rem;
+        padding: 8px;
+        margin-top: 10px; /* Espaço entre os elementos */
+    }
 }

@@ -6,6 +6,7 @@ const multer = require('multer')
 const multerConfig = require('./config/multer')
 const fs = require('fs')
 const { Item, Category } = require('./models/Item')
+require('dotenv').config();
 const PORT = process.env.PORT
 const frontendUrl = process.env.FRONTEND_URL
 

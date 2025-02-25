@@ -3,7 +3,7 @@ import styles from "./NewItem.module.css"
 import ItemForm from "../item/ItemForm"
 // Bibliotecas
 import { useNavigate } from 'react-router-dom'
-const backendUrl = process.env.BACKEND_URL
+const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 function NewItem() {
 

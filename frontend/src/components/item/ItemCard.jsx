@@ -5,7 +5,7 @@ import { FaTrash, FaEdit, FaDownload } from "react-icons/fa"
 import { useState } from 'react'
 import QRCode from 'react-qr-code'
 import QRCodeLink from 'qrcode'
-const frontendUrl = process.env.FRONTEND_URL
+const frontendUrl = import.meta.env.VITE_FRONTEND_URL
 
 function ItemCard({ id, name, budget, category, desc, handleRemove }) {
 

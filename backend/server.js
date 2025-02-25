@@ -126,7 +126,7 @@ app.patch('/itens/:id', multer(multerConfig).single('image'), async (req, res) =
 })
 
 app.use("/", (req, res)=>{
-    return res.json("Seja bem vindo, sua aplicação está rodando")
+    return res.json("Bem vindo, Sua aplicação está rodando!")
   })
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))

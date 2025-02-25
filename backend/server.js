@@ -10,7 +10,7 @@ const PORT = process.env.PORT
 
 // Liberando conexão com o front-end
 app.use(cors({
-    origin: 'https://stock-fawn-rho.vercel.app'
+    origin: 'https://frontend-silk-pi-79.vercel.app'
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

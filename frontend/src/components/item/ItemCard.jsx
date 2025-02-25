@@ -19,7 +19,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
     // Formatação do QR Code para download
     async function HandleGenerateQRCode() {
         try {
-            const url = await QRCodeLink.toDataURL(`https://frontend-omega-six-53.vercel.app/itens/${id}`, {
+            const url = await QRCodeLink.toDataURL(`https://stock-blue.vercel.app/itens/${id}`, {
                 width: 600,
                 margin: 3,
             })

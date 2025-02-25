@@ -3,7 +3,7 @@ import styles from "./NewItem.module.css"
 import ItemForm from "../item/ItemForm"
 // Bibliotecas
 import { useNavigate } from 'react-router-dom'
-
+const backendUrl = process.env.BACKEND_URL
 
 function NewItem() {
 
@@ -20,7 +20,7 @@ function NewItem() {
         formData.append("image", item.image)
         
         // Criando o Item
-        fetch('https://backend-lemon-sigma.vercel.app/itens', {
+        fetch(`${backendUrl}/itens`, {
             method: 'POST',
             body: formData,
         })

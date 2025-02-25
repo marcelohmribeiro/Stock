@@ -5,6 +5,7 @@ import { FaTrash, FaEdit, FaDownload } from "react-icons/fa"
 import { useState } from 'react'
 import QRCode from 'react-qr-code'
 import QRCodeLink from 'qrcode'
+const frontendUrl = process.env.FRONTEND_URL
 
 function ItemCard({ id, name, budget, category, desc, handleRemove }) {
 
@@ -19,7 +20,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
     // Formatação do QR Code para download
     async function HandleGenerateQRCode() {
         try {
-            const url = await QRCodeLink.toDataURL(`https://stock-blue.vercel.app/itens/${id}`, {
+            const url = await QRCodeLink.toDataURL(`${frontendUrl}/itens/${id}`, {
                 width: 600,
                 margin: 3,
             })

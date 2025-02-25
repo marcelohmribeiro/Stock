@@ -7,7 +7,7 @@ import ItemCard from '../item/ItemCard'
 // Bibliotecas
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from 'react'
-
+const backendUrl = process.env.BACKEND_URL
 
 function Stock() {
 
@@ -22,7 +22,7 @@ function Stock() {
 
     // Mostrar Cards
     useEffect(() => {
-        fetch('https://backend-lemon-sigma.vercel.app/itens', {
+        fetch(`${backendUrl}/itens`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function Stock() {
 
     // Excluir Item
     function removeItem(id) {
-        fetch(`https://backend-lemon-sigma.vercel.app/itens/${id}`, {
+        fetch(`${backendUrl}/itens/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

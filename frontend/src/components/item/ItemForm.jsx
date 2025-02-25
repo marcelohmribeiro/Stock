@@ -6,6 +6,7 @@ import SubmitButton from '../form/SubmitButton'
 import Upload from '../form/Upload'
 // Bibliotecas
 import { useState, useEffect } from 'react'
+const backendUrl = process.env.BACKEND_URL
 
 function ItemForm({ handleSubmit, itemData, btnText }) {
 
@@ -14,7 +15,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
 
     // Pegando as categorias existentes no DataBase
     useEffect(() => {
-        fetch('https://backend-lemon-sigma.vercel.app/categories', {
+        fetch(`${backendUrl}/categories`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

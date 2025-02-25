@@ -5,6 +5,7 @@ import ItemForm from '../item/ItemForm'
 // Bibliotecas
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+const backendUrl = process.env.BACKEND_URL
 
 function Item() {
 
@@ -17,7 +18,7 @@ function Item() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resp = await fetch(`https://backend-lemon-sigma.vercel.app/itens/${id}`, {
+                const resp = await fetch(`${backendUrl}/itens/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -25,7 +26,7 @@ function Item() {
                 })
 
                 const data = await resp.json()
-                const imageUrl = `https://backend-lemon-sigma.vercel.app${data.image}`
+                const imageUrl = `${backendUrl}${data.image}`
 
                 setItem({
                     ...data,
@@ -50,7 +51,7 @@ function Item() {
         formData.append('categoryId', item.categoryId)
         formData.append('image', item.image)
 
-        fetch(`https://backend-lemon-sigma.vercel.app/itens/${item.id}`, {
+        fetch(`${backendUrl}/itens/${item.id}`, {
             method: 'PATCH',
             body: formData,
         })

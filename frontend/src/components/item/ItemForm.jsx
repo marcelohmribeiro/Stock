@@ -6,9 +6,9 @@ import SubmitButton from '../form/SubmitButton'
 import Upload from '../form/Upload'
 // Bibliotecas
 import { useState, useEffect } from 'react'
-const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 function ItemForm({ handleSubmit, itemData, btnText }) {
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
 
     const [categories, setCategories] = useState([])
     const [item, setItem] = useState(itemData || {})

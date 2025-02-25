@@ -5,10 +5,10 @@ import ItemForm from '../item/ItemForm'
 // Bibliotecas
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 function Item() {
-
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    
     const { id } = useParams()
     const [item, setItem] = useState([])
     const [itemForm, setItemForm] = useState(false)

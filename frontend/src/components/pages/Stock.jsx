@@ -7,10 +7,10 @@ import ItemCard from '../item/ItemCard'
 // Bibliotecas
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from 'react'
-const backendUrl = import.meta.env.VITE_BACKEND_URL
 
 function Stock() {
-
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    
     const [itens, setItens] = useState([])
     const [itemMessage, setItemMessage] = useState('')
 

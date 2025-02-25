@@ -63,7 +63,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 <div className={styles.qr_code}>
                     <Link to={`/item/${id}`}>
                         <QRCode
-                            value={`https://stock-fawn-rho.vercel.app/item/${id}`}
+                            value={`frontend-silk-pi-79.vercel.app/item/${id}`}
                             style={{ height: "auto", maxWidth: "100%", width: "45%" }}
                         />
                     </Link>

@@ -9,6 +9,7 @@ const sequelize = new Sequelize({
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
     dialect: 'mysql',
+    dialectModule: require('mysql2'),
 })
 
 sequelize.authenticate()

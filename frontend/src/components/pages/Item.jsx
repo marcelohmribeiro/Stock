@@ -17,7 +17,7 @@ function Item() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resp = await fetch(`http://localhost:8081/itens/${id}`, {
+                const resp = await fetch(`https://backend-lemon-sigma.vercel.app/itens/${id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ function Item() {
                 })
 
                 const data = await resp.json()
-                const imageUrl = `http://localhost:8081${data.image}`
+                const imageUrl = `https://backend-lemon-sigma.vercel.app${data.image}`
 
                 setItem({
                     ...data,
@@ -50,7 +50,7 @@ function Item() {
         formData.append('categoryId', item.categoryId)
         formData.append('image', item.image)
 
-        fetch(`http://localhost:8081/itens/${item.id}`, {
+        fetch(`https://backend-lemon-sigma.vercel.app/itens/${item.id}`, {
             method: 'PATCH',
             body: formData,
         })

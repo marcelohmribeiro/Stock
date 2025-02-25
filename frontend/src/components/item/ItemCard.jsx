@@ -19,7 +19,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
     // Formatação do QR Code para download
     async function HandleGenerateQRCode() {
         try {
-            const url = await QRCodeLink.toDataURL(`http://localhost:8081/itens/${id}`, {
+            const url = await QRCodeLink.toDataURL(`https://backend-lemon-sigma.vercel.app/itens/${id}`, {
                 width: 600,
                 margin: 3,
             })
@@ -63,7 +63,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 <div className={styles.qr_code}>
                     <Link to={`/item/${id}`}>
                         <QRCode
-                            value={`http://localhost:5173/item/${id}`}
+                            value={`https://stock-fawn-rho.vercel.app/item/${id}`}
                             style={{ height: "auto", maxWidth: "100%", width: "45%" }}
                         />
                     </Link>

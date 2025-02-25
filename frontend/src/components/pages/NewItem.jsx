@@ -20,7 +20,7 @@ function NewItem() {
         formData.append("image", item.image)
         
         // Criando o Item
-        fetch('http://localhost:8081/itens', {
+        fetch('https://backend-lemon-sigma.vercel.app/itens', {
             method: 'POST',
             body: formData,
         })

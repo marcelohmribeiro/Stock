@@ -14,7 +14,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
 
     // Pegando as categorias existentes no DataBase
     useEffect(() => {
-        fetch('http://localhost:8081/categories', {
+        fetch('https://backend-lemon-sigma.vercel.app/categories', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

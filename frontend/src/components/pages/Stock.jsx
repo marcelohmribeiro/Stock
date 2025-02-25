@@ -22,7 +22,7 @@ function Stock() {
 
     // Mostrar Cards
     useEffect(() => {
-        fetch('http://localhost:8081/itens', {
+        fetch('https://backend-lemon-sigma.vercel.app/itens', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function Stock() {
 
     // Excluir Item
     function removeItem(id) {
-        fetch(`http://localhost:8081/itens/${id}`, {
+        fetch(`https://backend-lemon-sigma.vercel.app/itens/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

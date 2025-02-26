@@ -70,7 +70,7 @@ router.delete('/itens/:id', async (req, res) => {
         const item = await Item.findByPk(req.params.id)
 
         // Excluir o arquivo junto
-        if (item.imageName  ) {
+        if (item.imageName) {
             await cloudinary.uploader.destroy(item.imageName);
         }
         await item.destroy()

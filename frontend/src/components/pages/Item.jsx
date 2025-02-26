@@ -26,11 +26,10 @@ function Item() {
                 })
 
                 const data = await resp.json()
-                const imageUrl = `${backendUrl}${data.image}`
 
                 setItem({
                     ...data,
-                    imageUrl: imageUrl,
+                    imageUrl: data.image,
                 })
             } catch (error) {
                 console.error('Erro ao carregar item:', error)

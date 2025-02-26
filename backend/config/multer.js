@@ -12,9 +12,12 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: "uploads", // Mantendo uma pasta específica no Cloudinary
-        format: async (req, file) => path.extname(file.originalname).replace(".", ""), // Mantém a extensão original
-        public_id: (req, file) => `${Date.now()}_${file.originalname.replace(/\s+/g, "_")}`, // Evita espaços no nome
+        // Pasta onde o arquivo será salvo
+        folder: "uploads",
+        // Formato do arquivo
+        format: async (req, file) => path.extname(file.originalname).replace(".", ""),
+        // Nome do arquivo
+        public_id: (req, file) => `${Date.now()}_${file.originalname.replace(/\s+/g, "_")}`,
     },
 })
 

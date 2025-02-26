@@ -1,9 +1,9 @@
 import styles from './SubmitButton.module.css'
 
-function SubmitButton({ text }) {
+function SubmitButton({ text, disabled }) {
     return (
         <div>
-            <button className={styles.btn}>{text}</button>
+            <button className={styles.btn} disabled={disabled }>{text}</button>
         </div>
     )
 }

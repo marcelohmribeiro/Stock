@@ -12,6 +12,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
 
     const [categories, setCategories] = useState([])
     const [item, setItem] = useState(itemData || {})
+    const [submitting, setSubmitting] = useState(false)
 
     // Pegando as categorias existentes no DataBase
     useEffect(() => {
@@ -30,7 +31,8 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
 
     const submit = (e) => {
         e.preventDefault()
-        handleSubmit(item)
+        setSubmitting(true) // Desativa o botão
+        handleSubmit(item, () => setSubmitting(false)) // Ativa o botão
     }
 
     // Desestruturando os dados
@@ -91,8 +93,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 text="Imagem do produto (opcional)"
                 handleOnChange={handleImage}
             />
-
-            <SubmitButton text={btnText} />
+            <SubmitButton text={btnText}  disabled={submitting}/>
         </form>
     )
 }

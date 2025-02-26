@@ -9,7 +9,7 @@ function NewItem() {
 
     const navigate = useNavigate()
 
-    async function createPost(item) {
+    function createPost(item) {
         const formData = new FormData()
 
         // Atribuindo os valores com o formData
@@ -18,7 +18,7 @@ function NewItem() {
         formData.append("desc", item.desc)
         formData.append("categoryId", item.categoryId)
         formData.append("image", item.image)
-        
+
         // Criando o Item
         fetch(`${backendUrl}/itens`, {
             method: 'POST',

@@ -31,8 +31,8 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
 
     const submit = (e) => {
         e.preventDefault()
-        setSubmitting(true) // Desativa o botão
-        handleSubmit(item, () => setSubmitting(false)) // Ativa o botão
+        setSubmitting(true)
+        handleSubmit(item)
     }
 
     // Desestruturando os dados
@@ -93,7 +93,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 text="Imagem do produto (opcional)"
                 handleOnChange={handleImage}
             />
-            <SubmitButton text={btnText}  disabled={submitting}/>
+            <SubmitButton text={btnText} disabled={submitting}/>
         </form>
     )
 }

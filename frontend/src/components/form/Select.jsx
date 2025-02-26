@@ -9,7 +9,6 @@ function Select({ text, name, options, handleOnChange, value }) {
                 id={name}
                 onChange={handleOnChange}
                 value={value}
-                required
             >
                 <option value=''>Selecione uma opção</option>
                 {options.map((options) => (

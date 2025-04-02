@@ -50,7 +50,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 name: e.target.options[e.target.selectedIndex].text,
             },
         })
-    }
+    }   
 
     function handleImage(file) {
         setItem({ ...item, image: file })
@@ -84,7 +84,8 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
             />
             <Select
                 name="category_id"
-                text="Selecione a categoria"
+                textLabel="Selecione a categoria"
+                textOption="Selecione uma opção"
                 options={categories}
                 handleOnChange={handleCategory}
                 value={item.category ? item.categoryId : ''}
@@ -93,7 +94,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 text="Imagem do produto (opcional)"
                 handleOnChange={handleImage}
             />
-            <SubmitButton text={btnText} disabled={submitting}/>
+            <SubmitButton text={btnText} disabled={submitting} />
         </form>
     )
 }

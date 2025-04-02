@@ -54,7 +54,7 @@ function Stock() {
     return (
         <div className={styles.item_container}>
             <div className={styles.title_container}>
-                <h1>Meus Itens</h1>
+                <h1>Meus Produtos</h1>
                 {itens.length > 0 && <p>Produtos cadastrados: <span>{itens.length}</span></p>}
                 <LinkButton to="/newitem" text="Criar Item" />
             </div>

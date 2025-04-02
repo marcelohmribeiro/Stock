@@ -20,6 +20,9 @@ function NavBar() {
                     <li className={styles.item}>
                         <Link to="/stock">Estoque</Link>
                     </li>
+                    <li className={styles.item}>
+                        <Link to="/checkout">Checkout</Link>
+                    </li>
                 </ul>
             </Container>
         </nav>

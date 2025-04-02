@@ -6,6 +6,7 @@ import Item from "./components/pages/Item"
 import NavBar from "./components/layout/NavBar"
 import Container from "./components/layout/Container"
 import Footer from "./components/layout/Footer"
+import Checkout from './components/pages/Checkout'
 // Bibliotecas
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/stock" element={<Stock />} />
           <Route path="/newitem" element={<NewItem />} />
           <Route path="/item/:id" element={<Item />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </Container>
       <Footer />

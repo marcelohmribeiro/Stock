@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import styles from "./Checkout.module.css"
 import Input from "../form/Input"
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { FaRegTrashCan } from "react-icons/fa6";
 import Select from "../form/Select"
 import { GiBroom } from "react-icons/gi";
-import SubmitButton from "../form/SubmitButton";
 
 function Checkout() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -20,7 +19,7 @@ function Checkout() {
     })
     const [descount, setDiscount] = useState(0)
     const [selectedOption, setSelectedOption] = useState({})
-    const [selectedParcelas, setSelectedParcelas] = useState(0) // pegando o valor do select de parcelas
+    const [selectedParcelas, setSelectedParcelas] = useState(0)
 
     const paymentOptions = [
         { id: "1", name: "Pix" },
@@ -46,6 +45,7 @@ function Checkout() {
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart))
+        console.log("Atualizou cart:", cart)
     }, [cart])
 
     // Pega todos os itens do banco
@@ -82,24 +82,23 @@ function Checkout() {
             if (itemExists) {
                 console.log("Item já está no carrinho: ", itemCart.name)
                 return prevCart
-            } else {
-                const updatedCart = [...prevCart, { ...itemCart, quantity: 1 }]
-                localStorage.setItem("cart", JSON.stringify(updatedCart))
-                return updatedCart
             }
+            console.log("Adicionando item:", itemCart.name)
+            return [...prevCart, { ...itemCart, quantity: 1 }]
         })
     }
 
     // Remove o item do carrinho
     function removeItem(itemId) {
-        const itemRemove = cart.filter((item) => item.id !== itemId)
-        setCart(itemRemove, localStorage.setItem("cart", JSON.stringify(itemRemove)))
+        setCart((prevCart) => {
+            return prevCart.filter((item) => item.id !== itemId)
+        })
     }
 
     // Atualiza a quantidade do item no carrinho
     function updateQuantity(itemId, newQuantity) {
         if (newQuantity < 1 || isNaN(newQuantity)) {
-            newQuantity = 1
+            return
         }
         setCart((prevCart) =>
             prevCart.map((item) =>
@@ -144,11 +143,6 @@ function Checkout() {
         }
     }, [selectedOption, cartTotal])
 
-    function clearCart() {
-        setCart([], localStorage.removeItem("cart"))
-    }
-
-    /*
     function sendCart() {
         if (cart.length === 0) {
             console.log("Erro ao enviar: o carrinho está vazio!")
@@ -160,7 +154,6 @@ function Checkout() {
 
         }
     }
-    */
 
     return (
         <div className={styles.container}>
@@ -186,7 +179,10 @@ function Checkout() {
                                         <button
                                             className={styles.btn}
                                             type="button"
-                                            onClick={() => addCart(item)}>
+                                            onMouseDown={() => {
+                                                console.log("clicou")
+                                                addCart(item)
+                                            }}>
                                             Adicionar
                                         </button>
                                     </div>
@@ -278,8 +274,8 @@ function Checkout() {
                                 <span>Total</span>
                                 <span>R$ {(cartTotal() - descount).toFixed(2)}</span>
                             </div>
-                            <button className={styles.btn}>Finalizar Pedido</button>
-                            <button className={styles.clear} onClick={clearCart}>Limpar carrinho <GiBroom /></button>
+                            <button className={styles.btn} onClick={sendCart}>Finalizar Pedido</button>
+                            <button className={styles.clear} onClick={() => setCart([])}>Limpar carrinho <GiBroom /></button>
                         </div>
                     </div>
                 )}

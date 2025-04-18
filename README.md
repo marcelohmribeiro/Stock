@@ -16,21 +16,24 @@ Este sistema foi desenvolvido para uma instituição comunitária com o objetivo
 
 ## 🚀 Como instalar o Projeto
 
-1. Certifique-se de ter o **Node.js** instalado
+Certifique-se de ter o **Node.js** instalado
 
-2. Clone o repositório
+1. Clone o repositório:
 ```bash
-git clone <repositório>
+git clone https://github.com/marcelohmribeiro/Stock
 ```
-3. Acesse a pasta do projeto e instale as dependências
+2. Acesse a pasta do projeto:
 ```bash
-cd <repositório>
-yarn install
+cd nome-do-projeto
 ```
-4. Inicie a aplicação localmente
+
+3. Instale as dependências:
+```bash
+npm install
+```
+
+4. Inicie o projeto:
 ```bash
 cd frontend
-yarn dev
-cd backend
-yarn start
+npm run dev
 ```

@@ -1,24 +1,15 @@
 // Páginas
 import styles from './Stock.module.css'
-import Message from "../layout/Message"
 import LinkButton from '../layout/LinkButton'
 import Container from '../layout/Container'
 import ItemCard from '../item/ItemCard'
 // Bibliotecas
-import { useLocation } from "react-router-dom"
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 function Stock() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
-    
     const [itens, setItens] = useState([])
-    const [itemMessage, setItemMessage] = useState('')
-
-    const location = useLocation()
-    let message = ''
-    if (location.state) {
-        message = location.state.message
-    }
 
     // Mostrar Cards
     useEffect(() => {
@@ -37,16 +28,18 @@ function Stock() {
 
     // Excluir Item
     function removeItem(id) {
+        const token = localStorage.getItem("token")
         fetch(`${backendUrl}/itens/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
             },
         })
             .then((resp) => resp.json())
             .then(() => {
                 setItens(itens.filter((item) => item.id !== id))
-                setItemMessage('Item excluído com sucesso!')
+                toast.success("Item excluído com sucesso!")
             })
             .catch((err) => console.log(err))
     }
@@ -58,8 +51,6 @@ function Stock() {
                 {itens.length > 0 && <p>Produtos cadastrados: <span>{itens.length}</span></p>}
                 <LinkButton to="/newitem" text="Criar Item" />
             </div>
-            {message && <Message type="success" msg={message} />}
-            {itemMessage && <Message type="success" msg={itemMessage} />}
             <Container customClass="start">
                 {itens.length > 0 &&
                     itens.map((item) => (

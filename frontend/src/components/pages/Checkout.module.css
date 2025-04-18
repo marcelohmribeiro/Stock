@@ -26,7 +26,6 @@
     align-items: center;
     margin: auto;
     padding: 10px;
-
 }
 
 .item_info img {
@@ -54,10 +53,21 @@
 
 .search_container {
     margin-top: 25px;
-    background-color: #f9f9f9;
+    background-color: #f1f1f1;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.288);
+}
+
+.bcInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .btn {

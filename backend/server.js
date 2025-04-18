@@ -8,7 +8,7 @@ const frontendUrl = process.env.FRONTEND_URL
 
 // Liberando conexão com o front-end
 app.use(cors({
-    origin: `${frontendUrl}`
+    origin: `${frontendUrl}`,
 }))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

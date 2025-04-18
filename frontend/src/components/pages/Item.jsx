@@ -5,15 +5,14 @@ import ItemForm from '../item/ItemForm'
 // Bibliotecas
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 function Item() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
-    
     const { id } = useParams()
     const [item, setItem] = useState([])
     const [itemForm, setItemForm] = useState(false)
     const navigate = useNavigate()
-
     // Mostrar Card
     useEffect(() => {
         const fetchData = async () => {
@@ -21,12 +20,10 @@ function Item() {
                 const resp = await fetch(`${backendUrl}/itens/${id}`, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                 })
-
                 const data = await resp.json()
-
                 setItem({
                     ...data,
                     imageUrl: data.image,
@@ -35,14 +32,12 @@ function Item() {
                 console.error('Erro ao carregar item:', error)
             }
         }
-
         fetchData()
     }, [id])
-
     // Editar Card
     function editCard(item) {
+        const token = localStorage.getItem("token")
         const formData = new FormData()
-
         // Atribuindo os valores com o formData
         formData.append('name', item.name)
         formData.append('budget', item.budget)
@@ -53,24 +48,22 @@ function Item() {
         fetch(`${backendUrl}/itens/${item.id}`, {
             method: 'PATCH',
             body: formData,
+            Authorization: `Bearer ${token}`,
         })
             .then((resp) => resp.json())
             .then((data) => {
                 setItem(data)
                 setItemForm(!itemForm)
-                const state = { message: "Item atualizado com sucesso!" }
-                navigate('/stock', { state })
+                navigate('/stock', toast.success("Item atualizado com sucesso!"))
             })
             .catch(error => {
                 console.error("Erro ao editar o item:", error)
             })
     }
-
     // Editar e Fechar
     function item_form() {
         setItemForm(!itemForm)
     }
-
     return (
         <div className={styles.item_details}>
             <Container customClass="column">

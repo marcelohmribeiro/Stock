@@ -99,11 +99,13 @@
 .qr_code {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .qr_code a {
     padding-bottom: 8px;
     text-align: center;
+    cursor: pointer;
     padding-top: 0.4em;
     text-decoration: none;
     color: #222;

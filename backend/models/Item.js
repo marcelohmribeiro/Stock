@@ -19,13 +19,65 @@ const Item = db.sequelize.define('itens', {
     desc: {
         type: db.Sequelize.TEXT
     },
-    categoryId: {
-        type: db.Sequelize.INTEGER
-    },
     image: {
         type: db.Sequelize.STRING
     },
     imageName: {
+        type: db.Sequelize.STRING
+    }
+}, {
+    timestamps: false
+})
+
+const User = db.sequelize.define('users', {
+    name: {
+        type: db.Sequelize.STRING
+    },
+    email: {
+        type: db.Sequelize.STRING
+    },
+    password: {
+        type: db.Sequelize.STRING
+    },
+    role: {
+        type: db.Sequelize.ENUM('admin', 'user')
+    },
+    createdAt: {
+        type: db.Sequelize.DATE
+    }
+}, {
+    timestamps: false
+})
+
+const Order = db.sequelize.define('orders', {
+    user: {
+        type: db.Sequelize.STRING
+    },
+    data: {
+        type: db.Sequelize.DATE,
+        defaultValue: db.Sequelize.NOW
+    },
+    total: {
+        type: db.Sequelize.DECIMAL(10, 2)
+    },
+    payment_method: {
+        type: db.Sequelize.STRING
+    },
+    parcelas: {
+        type: db.Sequelize.INTEGER
+    }
+}, {
+    timestamps: false
+})
+
+const OrderItem = db.sequelize.define('orders_itens', {
+    quantity: {
+        type: db.Sequelize.INTEGER
+    },
+    budget: {
+        type: db.Sequelize.DECIMAL(10, 2)
+    },
+    item_name: {
         type: db.Sequelize.STRING
     }
 }, {
@@ -43,7 +95,25 @@ Item.belongsTo(Category, {
     as: 'category'
 })
 
+Order.hasMany(OrderItem, {
+    foreignKey: 'order_id',
+    as: 'itens'
+})
+
+OrderItem.belongsTo(Order, {
+    foreignKey: 'order_id',
+    as: 'order'
+})
+
+OrderItem.belongsTo(Item, {
+    foreignKey: 'product_id',
+    as: 'item'
+})
+
 module.exports = {
     Item: Item,
-    Category: Category
+    Category: Category,
+    User: User,
+    Order: Order,
+    OrderItem: OrderItem
 }

@@ -16,4 +16,9 @@
     width: 80px;
     height: auto;
     max-width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.footer img:hover {
+    transform: scale(1.05);
 }

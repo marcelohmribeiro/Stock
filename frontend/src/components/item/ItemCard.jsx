@@ -2,38 +2,50 @@ import styles from './ItemCard.module.css'
 // Bibliotecas
 import { Link } from 'react-router-dom'
 import { FaTrash, FaEdit, FaDownload } from "react-icons/fa"
-import { useState } from 'react'
-import QRCode from 'react-qr-code'
-import QRCodeLink from 'qrcode'
+import { useState, useRef } from 'react'
+import Barcode from 'react-barcode'
 
 function ItemCard({ id, name, budget, category, desc, handleRemove }) {
-    const frontendUrl = import.meta.env.VITE_FRONTEND_URL
-
     const remove = (e) => {
         e.preventDefault()
         handleRemove(id)
     }
-
-    const [qrcode, setQRCode] = useState('')
     const [itemCard, setItemCard] = useState(false)
-
-    // Formatação do QR Code para download
-    async function HandleGenerateQRCode() {
-        try {
-            const url = await QRCodeLink.toDataURL(`${frontendUrl}/itens/${id}`, {
-                width: 600,
-                margin: 3,
-            })
-            setQRCode(url) // Atualiza o estado com o URL gerado
-        } catch (err) {
-            console.log(err);
+    const barcodeRef = useRef(null)
+    // Formatação do Codigo de Barras
+    const handleDownloadBarcode = () => {
+        const svg = barcodeRef.current.querySelector('svg')
+        if (!svg) return
+        // Gerando o SVG
+        const svgData = new XMLSerializer().serializeToString(svg)
+        const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' })
+        const url = URL.createObjectURL(svgBlob)
+        // Transformando o SVG em imagem
+        const image = new Image()
+        image.onload = () => {
+            const canvas = document.createElement('canvas')
+            canvas.width = image.width
+            canvas.height = image.height
+            const ctx = canvas.getContext('2d')
+            ctx.drawImage(image, 0, 0)
+            // Salva como PNG
+            canvas.toBlob((blob) => {
+                const link = document.createElement('a')
+                link.href = URL.createObjectURL(blob)
+                link.download = `${name}-barcode.png`
+                document.body.appendChild(link)
+                link.click()
+                document.body.removeChild(link)
+                URL.revokeObjectURL(link.href)
+            }, 'image/png')
+            URL.revokeObjectURL(url)
         }
+        image.src = url
     }
-
+    // Estado para mostrar ou não
     function item_card() {
         setItemCard(!itemCard)
     }
-
     return (
         <div className={styles.item_card}>
             <h4>
@@ -49,7 +61,7 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 <span>Descrição:</span> {desc}
             </p>
             <button onClick={item_card} className={styles.btn}>
-                {!itemCard ? 'Gerar QR' : 'Voltar'}
+                {!itemCard ? 'Gerar CB' : 'Voltar'}
             </button>
             {!itemCard ? (
                 <div className={styles.item_card_actions}>
@@ -62,13 +74,16 @@ function ItemCard({ id, name, budget, category, desc, handleRemove }) {
                 </div>
             ) : (
                 <div className={styles.qr_code}>
-                    <Link to={`/item/${id}`}>
-                        <QRCode
-                            value={`${frontendUrl}/item/${id}`}
-                            style={{ height: "auto", maxWidth: "100%", width: "45%" }}
+                    <div ref={barcodeRef}>
+                        <Barcode
+                            value={String(id)}
+                            format="CODE128"
+                            height={100}
+                            width={2}
+                            displayValue={false}
                         />
-                    </Link>
-                    <a className={styles.QRdownload} onClick={HandleGenerateQRCode} href={qrcode} download={`${name}-qrcode.png`}><FaDownload /></a>
+                    </div>
+                    <a className={styles.QRdownload} onClick={handleDownloadBarcode}><FaDownload /></a>
                 </div>
             )}
         </div>

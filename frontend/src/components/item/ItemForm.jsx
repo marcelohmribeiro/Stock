@@ -9,7 +9,6 @@ import { useState, useEffect } from 'react'
 
 function ItemForm({ handleSubmit, itemData, btnText }) {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
-
     const [categories, setCategories] = useState([])
     const [item, setItem] = useState(itemData || {})
     const [submitting, setSubmitting] = useState(false)
@@ -19,7 +18,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
         fetch(`${backendUrl}/categories`, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
         })
             .then((resp) => resp.json())
@@ -50,7 +49,7 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
                 name: e.target.options[e.target.selectedIndex].text,
             },
         })
-    }   
+    }
 
     function handleImage(file) {
         setItem({ ...item, image: file })

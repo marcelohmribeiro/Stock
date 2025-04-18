@@ -3,6 +3,7 @@ import styles from "./NewItem.module.css"
 import ItemForm from "../item/ItemForm"
 // Bibliotecas
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 function NewItem() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -26,8 +27,7 @@ function NewItem() {
         })
             .then((resp) => resp.json())
             .then((data) => {
-                console.log("Item criado:", data)
-                navigate('/stock', { state: { message: "Item criado com sucesso!" } })
+                navigate('/stock', toast.success("Item criado com sucesso!"))
             })
             .catch((err) => console.error(err))
     }

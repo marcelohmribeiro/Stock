@@ -8,9 +8,9 @@
     border-radius: 5px;
     cursor: pointer;
     border: none;
+    width: 100%;
 }
 
 .btn:hover {
-    color: #D2A679;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.911);
+    background-color: black;
 }

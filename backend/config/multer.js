@@ -27,7 +27,7 @@ const upload = multer({
     limits: { fileSize: 2 * 1024 * 1024 }, // 2MB
     // Formato de imagens permitidas
     fileFilter: (req, file, cb) => {
-        const allowedImages = ["image/jpeg", "image/jpg", "image/png"];
+        const allowedImages = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
         // Verificando se o arquivo é permitido
         if (allowedImages.includes(file.mimetype)) {
             cb(null, true)

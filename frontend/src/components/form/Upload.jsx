@@ -1,20 +1,16 @@
 import styles from './Upload.module.css'
-import Message from '../layout/Message'
 // Bibliotecas
 import Dropzone from 'react-dropzone'
 import { useState } from 'react'
 import { MdCheckCircle, MdError, MdLink } from 'react-icons/md'
+import { toast } from 'react-toastify'
 
 function Upload({ handleOnChange, text }) {
-
     const [fileInfo, setFileInfo] = useState(null)
-    const [fileMessage, setFileMessage] = useState('')
-    const maxFileSize = 2 * 1024 * 1024
-
+    const maxFileSize = 2 * 1024 * 1024 // 2MB
+    // Upload do arquivo
     const handleUpload = (acceptedFiles) => {
         const selectedFile = acceptedFiles[0]
-
-
         if (selectedFile) {
             const isValid = selectedFile.size <= maxFileSize
             setFileInfo({
@@ -24,15 +20,13 @@ function Upload({ handleOnChange, text }) {
                 error: !isValid,
                 url: URL.createObjectURL(selectedFile)
             })
-
             if (isValid) {
                 handleOnChange(selectedFile) // Passando o file para o componente pai
             } else {
-                setFileMessage('Arquivo não suportado!')
+                toast.warn('Arquivo muito grande! O tamanho máximo é de 2MB.')
             }
         }
     }
-
     // Formatação do tamanho do arquivo
     const formatFileSize = (size) => {
         if (size < 1024) {
@@ -43,13 +37,12 @@ function Upload({ handleOnChange, text }) {
             return `${(size / (1024 * 1024)).toFixed(2)} MB`
         }
     }
-
+    // Excluir arquivo
     const removeFile = () => {
         setFileInfo(null)
         handleOnChange(null)
-        setFileMessage('')
     }
-
+    // Mensagem da caixa de upload
     function renderMessage(isDragActive, isDragReject) {
         if (!isDragActive) {
             return <p>Arraste o arquivo aqui...</p>
@@ -59,10 +52,8 @@ function Upload({ handleOnChange, text }) {
         }
         return <p className={styles.success}>Solte o arquivo aqui</p>
     }
-
     return (
         <div className={styles.container}>
-            {fileMessage && <Message type="error" msg={fileMessage} />}
             {!fileInfo && (
                 <Dropzone onDrop={handleUpload} accept={{ 'image/*': [] }} >
                     {({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
@@ -104,7 +95,6 @@ function Upload({ handleOnChange, text }) {
                 </ul>
             )}
         </div>
-
     )
 }
 

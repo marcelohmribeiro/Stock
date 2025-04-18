@@ -1,7 +1,7 @@
 # 📌 Sistema de Controle de Produtos
 
 ## 📦 Sobre
-O *STOCK* é um sistema desenvolvido para uma instituição comunitária, com o objetivo de facilitar o gerenciamento de produtos de um bazar. Ele permite o controle de estoque, pedidos e usuários de forma simples e eficiente.
+O **STOCK** é um sistema desenvolvido para uma instituição comunitária, com o objetivo de facilitar o gerenciamento de produtos de um bazar. Ele permite o controle de estoque, pedidos e usuários de forma simples e eficiente.
 
 ## ✏️ Funcionalidades Principais
 - *Autenticação com JWT (login e registro).*

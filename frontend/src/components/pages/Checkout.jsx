@@ -146,10 +146,10 @@ function Checkout() {
                 // Se já estiver no carrinho, aumenta a quantidade
                 const updatedCart = cart.map((c) => c.id === foundItem.id ? { ...c, quantity: c.quantity + 1 } : c)
                 setCart(updatedCart)
-                toast.info(`Quantidade de ${foundItem.name} aumentada`)
+                toast.info(`Quantidade de ${foundItem.name.toUpperCase()} aumentada`)
             } else {
                 addCart(foundItem)
-                toast.success(`${foundItem.name} adicionado ao carrinho`)
+                toast.success(`${foundItem.name.toUpperCase()} adicionado ao carrinho`)
             }
         } else {
             toast.error("Produto não encontrado!")

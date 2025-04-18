@@ -27,13 +27,12 @@ function ItemForm({ handleSubmit, itemData, btnText }) {
             })
     }, [])
 
-
     const submit = (e) => {
         e.preventDefault()
         setSubmitting(true)
         handleSubmit(item)
     }
-
+    
     // Desestruturando os dados
     function handleChange(e) {
         setItem({ ...item, [e.target.name]: e.target.value })

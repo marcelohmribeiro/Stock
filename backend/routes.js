@@ -27,7 +27,6 @@ router.post('/itens', upload.single('image'), async (req, res) => {
     try {
         const imageUrl = req.file ? req.file.path : null // armazena a URL do arquivo
         const publicId = req.file ? req.file.filename : null // armazena o nome original do arquivo
-
         const newItem = await Item.create({
             name: req.body.name,
             budget: req.body.budget,

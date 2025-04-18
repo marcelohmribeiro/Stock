@@ -121,14 +121,21 @@ router.get("/users", authMiddleware, async (req, res) => {
 // Login Usuário
 router.post("/login", async (req, res) => {
     const { email, password } = req.body
+    console.log("Iniciando a requisição de login");
+    console.log("Email recebido:", email);
     try {
+        console.log("Procurando usuário no banco de dados...");
         const user = await User.findOne({ where: { email: email } })
         if (!user) {
+            console.log("Usuário não encontrado com o email:", email);
             return res.status(404).json({ message: "Usuário não encontrado" })
         }
+        console.log("Usuário encontrado:", user.name);
+        console.log("Verificando a senha...");
         // Verifica se a senha está correta
         const checkPassword = await bcrypt.compare(password, user.password)
         if (!checkPassword) {
+            console.log("Senha incorreta para o usuário:", email);
             return res.status(401).json({ message: "Senha incorreta" })
         }
         // Gera o token de autenticação
@@ -137,6 +144,7 @@ router.post("/login", async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         )
+        
         console.log("Token gerado com sucesso para o usuário:", email)
         return res.status(200).json({ user, token })
     } catch (error) {

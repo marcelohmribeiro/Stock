@@ -137,6 +137,12 @@ router.post("/login", async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         )
+        const userData = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role
+        }
         return res.status(200).json({ user: userData, token })
     } catch (error) {
         console.error("Erro no login:", error)

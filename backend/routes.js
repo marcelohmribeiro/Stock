@@ -74,7 +74,11 @@ router.delete('/itens/:id', authMiddleware, async (req, res) => {
 
         // Excluir o arquivo junto
         if (item.imageName) {
-            await cloudinary.uploader.destroy(item.imageName);
+            try {
+                await cloudinary.uploader.destroy(item.imageName)
+            } catch (cloudErr) {
+                console.log("Imagem já foi removida ou não existe:")
+            }
         }
         await item.destroy()
         res.json({ message: 'Item excluído com sucesso' })

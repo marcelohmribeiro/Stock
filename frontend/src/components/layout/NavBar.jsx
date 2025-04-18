@@ -2,7 +2,6 @@
 import styles from './NavBar.module.css'
 import logo from '../img/logo.png'
 import { useAuth } from '../context/AuthContext'
-import defaultPicture from '../img/default.png'
 import { IoIosLogOut } from "react-icons/io";
 // Bibliotecas
 import { Link } from 'react-router-dom'
@@ -15,6 +14,7 @@ function NavBar() {
         logout()
         navigate('/login')
     }
+    const defaultPicture = 'https://res.cloudinary.com/dtkkjffju/image/upload/v1744936712/default_qf4w1m.png'
 
     return (
         <>
@@ -40,10 +40,10 @@ function NavBar() {
                         <div className={styles.profile_container}>
                             {user.role === "admin" ? (
                                 <Link to="/dashboard"  >
-                                    <img src={defaultPicture || user.picture} />
+                                    <img src={defaultPicture} />
                                 </Link>
                             ) : (
-                                <img src={defaultPicture || user.picture} />
+                                <img src={defaultPicture} />
                             )}
                             <div className={styles.profile_info}>
                                 <h3>{user.name}</h3>

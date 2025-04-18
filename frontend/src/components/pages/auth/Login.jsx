@@ -52,7 +52,7 @@ function Login() {
     }
 
     return (
-        <form onSubmit={submit} className={styles.login_container} autocomplete="off">
+        <form onSubmit={submit} className={styles.login_container} autoComplete="off">
             <img src={logo} />
             <Input
                 type='email'

@@ -1,4 +1,4 @@
-const db = require('../config/db');
+const db = require('../config/db')
 
 // Modelos
 const Category = db.sequelize.define('categories', {
@@ -7,7 +7,7 @@ const Category = db.sequelize.define('categories', {
     }
 }, {
     timestamps: false
-});
+})
 
 const Item = db.sequelize.define('itens', {
     name: {
@@ -27,7 +27,7 @@ const Item = db.sequelize.define('itens', {
     }
 }, {
     timestamps: false
-});
+})
 
 const User = db.sequelize.define('users', {
     name: {
@@ -47,7 +47,7 @@ const User = db.sequelize.define('users', {
     }
 }, {
     timestamps: false
-});
+})
 
 const Order = db.sequelize.define('orders', {
     user: {
@@ -68,7 +68,7 @@ const Order = db.sequelize.define('orders', {
     }
 }, {
     timestamps: false
-});
+})
 
 const OrderItem = db.sequelize.define('orders_itens', {
     quantity: {
@@ -82,28 +82,27 @@ const OrderItem = db.sequelize.define('orders_itens', {
     }
 }, {
     timestamps: false
-});
+})
 
-// Relacionando as tabelas sem onDelete e onUpdate
 Category.hasMany(Item, {
     foreignKey: 'categoryId',
     as: 'itens'
-});
+})
 
 Item.belongsTo(Category, {
     foreignKey: 'categoryId',
     as: 'category'
-});
+})
 
 Order.hasMany(OrderItem, {
     foreignKey: 'order_id',
     as: 'itens'
-});
+})
 
 OrderItem.belongsTo(Order, {
     foreignKey: 'order_id',
     as: 'order'
-});
+})
 
 module.exports = {
     Item: Item,
@@ -111,4 +110,4 @@ module.exports = {
     User: User,
     Order: Order,
     OrderItem: OrderItem
-};
+}

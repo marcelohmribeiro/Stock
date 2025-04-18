@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import LinkButton from '../../layout/LinkButton'
 import { toast } from 'react-toastify'
 import { IoCloseOutline } from "react-icons/io5";
+import Loading from '../../layout/Loading'
 
 function AdminDashboard() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -128,7 +129,9 @@ function AdminDashboard() {
             console.error("Erro ao excluir pedido:", err)
         }
     }
-    if (loading) return <p>Carregando usuários...</p>
+    if (loading) return (
+        <Loading txt="Carregando..."/>
+    )
     return (
         <div className={styles.container_main}>
             <div className={styles.titleContainer}>
@@ -154,7 +157,7 @@ function AdminDashboard() {
                         ))}
                     </div>
                 </div>
-                
+
                 <div className={styles.checkoutHistory}>
                     <h1>Histórico de Pedidos</h1>
                     <table className={styles.table}>

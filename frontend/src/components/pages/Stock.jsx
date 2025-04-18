@@ -3,6 +3,7 @@ import styles from './Stock.module.css'
 import LinkButton from '../layout/LinkButton'
 import Container from '../layout/Container'
 import ItemCard from '../item/ItemCard'
+import Loading from '../layout/Loading'
 // Bibliotecas
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
@@ -10,7 +11,7 @@ import { toast } from 'react-toastify'
 function Stock() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const [itens, setItens] = useState([])
-
+    const [loading, setLoading] = useState(true)
     // Mostrar Cards
     useEffect(() => {
         fetch(`${backendUrl}/itens`, {
@@ -22,10 +23,10 @@ function Stock() {
             .then((resp) => resp.json())
             .then((data) => {
                 setItens(data)
+                setLoading(false)
             })
             .catch((err) => console.log(err))
     }, [])
-
     // Excluir Item
     function removeItem(id) {
         const token = localStorage.getItem("token")
@@ -43,7 +44,9 @@ function Stock() {
             })
             .catch((err) => console.log(err))
     }
-
+    if (loading) return (
+        <Loading txt="Carregando..." />
+    )
     return (
         <div className={styles.item_container}>
             <div className={styles.title_container}>

@@ -9,6 +9,7 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { GiBroom } from "react-icons/gi";
 import { useAuth } from "../context/AuthContext";
 import { toast } from 'react-toastify'
+import Loading from "../layout/Loading";
 
 function Checkout() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -26,6 +27,7 @@ function Checkout() {
     const [selectedParcelas, setSelectedParcelas] = useState(0)
     const [barcode, setBarcode] = useState("")
     const [submitting, setSubmitting] = useState(false)
+    const [loading, setLoading] = useState(false)
     const paymentOptions = [
         { id: "1", name: "Pix" },
         { id: "2", name: "Cartão de debito" },
@@ -182,6 +184,7 @@ function Checkout() {
             return toast.warning("Selecione uma forma de pagamento!")
         }
         setSubmitting(true)
+        setLoading(true)
         const User = user?.name
         const total = cart.reduce((sum, item) => sum + (item.budget * item.quantity), 0) - parseFloat(discount).toFixed(2)
         const payment_method = selectedOption.name
@@ -209,8 +212,12 @@ function Checkout() {
             toast.error('Erro ao enviar pedido!')
         } finally {
             setSubmitting(false)
+            setLoading(false)
         }
     }
+    if (loading) return (
+        <Loading txt="Enviando..."/>
+    )
     return (
         <div className={styles.container}>
             <div className={styles.search_container}>

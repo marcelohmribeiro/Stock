@@ -175,41 +175,39 @@ function Checkout() {
         }
     }, [])
     // Finalizar Pedido
-    function sendCart() {
+    async function sendCart() {
         if (cart.length <= 0) {
             return toast.error("O carrinho está vazio!")
         } else if (!selectedOption.id) {
             return toast.warning("Selecione uma forma de pagamento!")
-        } else {
-            setSubmitting(true)
-            const User = user?.name
-            const total = cart.reduce((sum, item) => sum + (item.budget * item.quantity), 0) - parseFloat(discount).toFixed(2)
-            const payment_method = selectedOption.name
-            const parcelas = selectedParcelas
-            // Percorrendo o carrinho
-            const itens = cart.map(item => ({
-                product_id: item.id,
-                quantity: item.quantity,
-                budget: item.budget,
-                item_name: item.name
-            }))
-            // Finalizando pedido
-            fetch(`${backendUrl}/createOrder`, {
+        }
+        setSubmitting(true)
+        const User = user?.name
+        const total = cart.reduce((sum, item) => sum + (item.budget * item.quantity), 0) - parseFloat(discount).toFixed(2)
+        const payment_method = selectedOption.name
+        const parcelas = selectedParcelas
+        // Percorrendo o carrinho
+        const itens = cart.map(item => ({
+            product_id: item.id,
+            quantity: item.quantity,
+            budget: item.budget,
+            item_name: item.name
+        }))
+        // Finalizando pedido
+        try {
+            const response = await fetch(`${backendUrl}/createOrder`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user: User, itens, total, payment_method, parcelas })
             })
-                .then((resp) => resp.json())
-                .then((data) => {
-                    toast.success('Pedido enviado com sucesso!')
-                    setCart([])
-                    console.log(data)
-                })
-                .catch((err) => {
-                    console.error('Erro ao enviar pedido:', err)
-                })
+            const data = await response.json()
+            toast.success('Pedido enviado com sucesso!')
+            setCart([])
+            console.log(data)
+        } catch (err) {
+            console.error('Erro ao enviar pedido:', err)
+            toast.error('Erro ao enviar pedido!')
+        } finally {
             setSubmitting(false)
         }
     }

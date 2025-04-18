@@ -1,13 +1,17 @@
 # 📌 Sistema de Controle de Produtos
 
-## 📦 Sobre o Stock
-Este sistema foi desenvolvido para uma instituição comunitária com o objetivo de facilitar o gerenciamento de produtos em um bazar.
+## 📦 Sobre
+O *STOCK* é um sistema desenvolvido para uma instituição comunitária, com o objetivo de facilitar o gerenciamento de produtos de um bazar. Ele permite o controle de estoque, pedidos e usuários de forma simples e eficiente.
 
-## ✏️ Funcionalidades
+## ✏️ Funcionalidades Principais
+- *Autenticação com JWT (login e registro).*
+- *Controle de acesso por cargo.*
 - *Cadastro e gerenciamento de produtos.*
-- *Adição de características personalizadas a cada item.*
-- *Upload de imagens para os produtos.*
-- *Geração automática de QR Code para cada item.*
+- *Upload de imagens + Codigo de barras*
+- *Registro e fechamento de pedidos*
+- *Controle de pedidos finalizados*
+- *Controle de usuários cadastrados*
+- *Página de checkout exclusiva para usuários comuns*
 
 ## 🖥️ Tecnologias
 - **Frontend:** React.js

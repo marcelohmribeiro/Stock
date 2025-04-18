@@ -137,13 +137,8 @@ router.post("/login", async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         )
-        const userData = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role
-        }
-        return res.status(200).json({ user: userData, token })
+        console.log("Token gerado com sucesso para o usuário:", email)
+        return res.status(200).json({ user, token })
     } catch (error) {
         console.error("Erro no login:", error)
         return res.status(500).json({ message: "Erro interno no servidor" })

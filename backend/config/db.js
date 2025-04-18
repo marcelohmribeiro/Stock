@@ -2,9 +2,12 @@ const { Sequelize } = require('sequelize')
 require("dotenv").config()
 
 // Conexão com o banco de dados
-const sequelize = new Sequelize(process.env.PGDATABASE, process.env.PGUSER, process.env.PGPASSWORD, {
+const sequelize = new Sequelize({
+    dialect: 'postgres',
     host: process.env.PGHOST,
-    dialect: "postgres",
+    username: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    database: process.env.PGDATABASE,
   })
 
 sequelize.authenticate()

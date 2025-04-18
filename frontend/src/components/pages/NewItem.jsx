@@ -15,14 +15,12 @@ function NewItem() {
     function createPost(item) {
         setLoading(true)
         const formData = new FormData()
-
         // Atribuindo os valores com o formData
         formData.append("name", item.name)
         formData.append("budget", item.budget)
         formData.append("desc", item.desc)
         formData.append("categoryId", item.categoryId)
         formData.append("image", item.image)
-
         // Criando o Item
         fetch(`${backendUrl}/itens`, {
             method: 'POST',

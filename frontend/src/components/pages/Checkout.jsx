@@ -1,8 +1,7 @@
 import styles from "./Checkout.module.css"
-//
 import Input from "../form/Input"
 import Select from "../form/Select"
-//
+// Bibliotecas
 import { useState, useEffect, useRef } from "react"
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { FaRegTrashCan } from "react-icons/fa6";

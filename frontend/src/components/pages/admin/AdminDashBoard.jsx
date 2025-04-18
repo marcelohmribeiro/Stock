@@ -1,11 +1,13 @@
 import styles from './DashBoard.module.css'
-import { useEffect, useState } from 'react'
+// Páginas
 import { useAuth } from '../../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import Loading from '../../layout/Loading'
 import LinkButton from '../../layout/LinkButton'
+// Bibliotecas
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { IoCloseOutline } from "react-icons/io5";
-import Loading from '../../layout/Loading'
 
 function AdminDashboard() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -109,6 +111,7 @@ function AdminDashboard() {
         setOpenOrder(false)
         setSelectedOrder(null)
     }
+    // Deleta Pedido
     const handleDeleteOrder = async (orderId) => {
         try {
             const res = await fetch(`${backendUrl}/orders/${orderId}`, {
@@ -186,6 +189,7 @@ function AdminDashboard() {
                     </table>
                 </div>
             </div>
+            
             {openOrder && (
                 <div className={styles.modal_overlay} onClick={handleCloseModal}>
                     <div className={styles.modal_content} onClick={(e) => e.stopPropagation()}>

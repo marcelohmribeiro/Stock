@@ -15,7 +15,6 @@ function NavBar() {
         logout()
         navigate('/login')
     }
-
     return (
         <>
             {user && (
@@ -48,7 +47,6 @@ function NavBar() {
                             <div className={styles.profile_info}>
                                 <h3>{user.name}</h3>
                                 {user.role === "admin" ? <p>Administrador</p> : <p>Funcionário</p>}
-
                             </div>
                             <button onClick={handleLogout}>
                                 <IoIosLogOut />

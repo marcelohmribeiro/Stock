@@ -1,8 +1,10 @@
 import styles from "./Register.module.css"
+// Páginas
 import Input from "../../form/Input"
 import logo from "../../img/voar_logo.png"
 import SubmitButton from "../../form/SubmitButton"
 import Loading from "../../layout/Loading"
+// Bibliotecas
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify'

@@ -105,11 +105,6 @@ OrderItem.belongsTo(Order, {
     as: 'order'
 })
 
-OrderItem.belongsTo(Item, {
-    foreignKey: 'product_id',
-    as: 'item'
-})
-
 module.exports = {
     Item: Item,
     Category: Category,

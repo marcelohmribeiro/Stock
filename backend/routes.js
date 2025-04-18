@@ -229,11 +229,7 @@ router.get('/orders', async (req, res) => {
             include: {
                 model: OrderItem,
                 as: 'itens',
-                include: [{
-                    model: Item,
-                    as: 'item',
-                    attributes: ['name', 'budget']
-                }]
+                attributes: ['item_name', 'quantity', 'budget']
             },
             order: [['id', 'DESC']]
         })

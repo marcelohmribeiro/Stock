@@ -74,6 +74,7 @@ function AdminDashboard() {
             }
         }
         fetchOrders()
+        return () => setOrders([])
     }, [backendUrl, user])
     // Deletar usuário
     const handleDeleteUser = async (userId) => {
@@ -107,7 +108,6 @@ function AdminDashboard() {
         setOpenOrder(false)
         setSelectedOrder(null)
     }
-
     const handleDeleteOrder = async (orderId) => {
         try {
             const res = await fetch(`${backendUrl}/orders/${orderId}`, {
@@ -154,7 +154,7 @@ function AdminDashboard() {
                         ))}
                     </div>
                 </div>
-
+                
                 <div className={styles.checkoutHistory}>
                     <h1>Histórico de Pedidos</h1>
                     <table className={styles.table}>

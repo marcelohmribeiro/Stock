@@ -1,17 +1,19 @@
-const { Sequelize } = require('sequelize')
+const Sequelize = require('sequelize')
 require("dotenv").config()
 
 // Conexão com o banco de dados
 const sequelize = new Sequelize({
-    dialect: 'postgres',
-    host: process.env.PGHOST,
-    username: process.env.PGUSER,
-    password: process.env.PGPASSWORD,
-    database: process.env.PGDATABASE,
-  })
+    host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT,
+    dialect: 'mysql',
+    dialectModule: require('mysql2'),
+})
 
 sequelize.authenticate()
-    .then(() => console.log("Conectado ao banco PostgreSQL via Neon"))
+    .then(() => console.log("Conectado"))
     .catch(err => console.error("Erro ao conectar:", err))
 
 module.exports = {

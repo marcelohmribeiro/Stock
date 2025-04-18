@@ -84,6 +84,7 @@ const OrderItem = db.sequelize.define('orders_itens', {
     timestamps: false
 })
 
+// Relacionando as tabelas
 Category.hasMany(Item, {
     foreignKey: 'categoryId',
     as: 'itens'

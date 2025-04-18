@@ -71,7 +71,6 @@ router.get('/itens/:id', async (req, res) => {
 router.delete('/itens/:id', authMiddleware, async (req, res) => {
     try {
         const item = await Item.findByPk(req.params.id)
-
         // Excluir o arquivo junto
         if (item.imageName) {
             try {
@@ -80,6 +79,7 @@ router.delete('/itens/:id', authMiddleware, async (req, res) => {
                 console.log("Imagem já foi removida ou não existe:")
             }
         }
+        await OrderItem.destroy({ where: { product_id: item.id } })
         await item.destroy()
         res.json({ message: 'Item excluído com sucesso' })
     } catch (err) {

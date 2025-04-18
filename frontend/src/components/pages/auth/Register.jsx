@@ -44,7 +44,7 @@ function Register() {
     }
 
     return (
-        <form onSubmit={submit} className={styles.register_container}>
+        <form onSubmit={submit} className={styles.register_container} autoComplete="off">
             <img src={logo} />
             <Input
                 type="text"

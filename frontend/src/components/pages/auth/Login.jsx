@@ -3,6 +3,7 @@ import styles from "./Login.module.css"
 import Input from "../../form/Input"
 import logo from "../../img/voar_logo.png"
 import SubmitButton from "../../form/SubmitButton"
+import Loading from "../../layout/Loading"
 // Bibliotecas
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
@@ -21,7 +22,6 @@ function Login() {
     const submit = async (e) => {
         e.preventDefault()
         setLoading(true)
-
         try {
             const res = await fetch(`${backendUrl}/login`, {
                 method: "POST",
@@ -50,7 +50,9 @@ function Login() {
             setLoading(false)
         }
     }
-
+    if (loading) return (
+        <Loading txt="Validando..." />
+    )
     return (
         <form onSubmit={submit} className={styles.login_container} autoComplete="off">
             <img src={logo} />

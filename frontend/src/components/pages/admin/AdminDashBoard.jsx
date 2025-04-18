@@ -16,6 +16,7 @@ function AdminDashboard() {
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
+    const [submitting, setSubmitting] = useState(false)
     const [orders, setOrders] = useState([])
     const [openOrder, setOpenOrder] = useState(false)
     const [selectedOrder, setSelectedOrder] = useState(null)
@@ -81,6 +82,7 @@ function AdminDashboard() {
     }, [backendUrl, user])
     // Deletar usuário
     const handleDeleteUser = async (userId) => {
+        setSubmitting(true)
         if (token) {
             try {
                 const res = await fetch(`${backendUrl}/users/${userId}`, {
@@ -100,6 +102,7 @@ function AdminDashboard() {
             } catch (error) {
                 console.error('Erro ao excluir usuário', error)
             }
+            setSubmitting(false)
         }
     }
     // Abrir e fechar pedido
@@ -113,6 +116,7 @@ function AdminDashboard() {
     }
     // Deleta Pedido
     const handleDeleteOrder = async (orderId) => {
+        setSubmitting(true)
         try {
             const res = await fetch(`${backendUrl}/orders/${orderId}`, {
                 method: 'DELETE',
@@ -131,9 +135,10 @@ function AdminDashboard() {
         } catch (err) {
             console.error("Erro ao excluir pedido:", err)
         }
+        setSubmitting(false)
     }
     if (loading) return (
-        <Loading txt="Carregando..."/>
+        <Loading txt="Carregando..." />
     )
     return (
         <div className={styles.container_main}>
@@ -154,7 +159,7 @@ function AdminDashboard() {
                                 <p><span>Email: </span>{u.email}</p>
                                 <p><span>Criado em: </span>{new Date(u.createdAt).toLocaleString()}</p>
                                 {u.id !== user.id && (
-                                    <button className={styles.btnDelete} onClick={() => handleDeleteUser(u.id)}>Excluir</button>
+                                    <button className={styles.btnDelete} onClick={() => handleDeleteUser(u.id)} disabled={submitting}>Excluir</button>
                                 )}
                             </div>
                         ))}
@@ -189,7 +194,7 @@ function AdminDashboard() {
                     </table>
                 </div>
             </div>
-            
+
             {openOrder && (
                 <div className={styles.modal_overlay} onClick={handleCloseModal}>
                     <div className={styles.modal_content} onClick={(e) => e.stopPropagation()}>
@@ -211,7 +216,7 @@ function AdminDashboard() {
                                     <p><strong>Preço Unitário: </strong>R${item.budget}</p>
                                 </li>
                             ))}
-                            <button onMouseDown={() => handleDeleteOrder(selectedOrder.id)}>Excluir</button>
+                            <button onMouseDown={() => handleDeleteOrder(selectedOrder.id)} disabled={submitting}>Excluir</button>
                         </ul>
                     </div>
                 </div>

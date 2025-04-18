@@ -79,7 +79,6 @@ router.delete('/itens/:id', authMiddleware, async (req, res) => {
                 console.log("Imagem já foi removida ou não existe:")
             }
         }
-        await OrderItem.destroy({ where: { product_id: item.id } })
         await item.destroy()
         res.json({ message: 'Item excluído com sucesso' })
     } catch (err) {
@@ -213,6 +212,7 @@ router.post('/createOrder', async (req, res) => {
 router.delete('/orders/:id', authMiddleware, async (req, res) => {
     const orderId = req.params.id
     try {
+        await OrderItem.destroy({ where: { order_id: orderId } })
         await Order.destroy({ where: { id: orderId } })
         res.status(200).json({ message: "Pedido excluído com sucesso" })
     } catch (err) {

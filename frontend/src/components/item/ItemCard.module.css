@@ -141,7 +141,7 @@
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .item_card {
         width: 48%;
         margin: 1%;

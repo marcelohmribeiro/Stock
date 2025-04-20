@@ -89,3 +89,19 @@
     max-width: 200px;
   }
 }
+
+@media (max-width: 1200px) {
+  .item_details {
+    padding: 1.2em;
+  }
+
+  .details_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .itemImage {
+    width: 100%;
+    max-width: 250px;
+  }
+}

@@ -217,7 +217,7 @@
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
     .container {
         flex-direction: column;
         gap: 2em;
@@ -225,7 +225,6 @@
 
     .dashboardContainer {
         width: 80%;
-        /* Mais estreito para iPad */
         padding: 1.2em;
         margin: auto;
     }
@@ -236,7 +235,6 @@
 
     .dashboardContainer h1 {
         font-size: 1.4rem;
-        /* Fonte menor */
     }
 
     .userList {

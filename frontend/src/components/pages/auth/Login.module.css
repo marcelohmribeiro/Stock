@@ -17,28 +17,6 @@
 }
 
 /* ============ RESPONSIVIDADE ============ */
-@media (max-width: 430px) {
-    .login_container {
-        width: 90%;
-        padding: 1.5em 1em;
-    }
-
-    .login_container img {
-        width: 150px;
-    }
-}
-
-@media (max-width: 768px) {
-    .login_container {
-        width: 85%;
-        padding: 2em 1.5em;
-    }
-
-    .login_container img {
-        width: 180px;
-    }
-}
-
 @media (max-width: 1024px) {
     .login_container {
         width: 85%;
@@ -47,5 +25,16 @@
 
     .login_container img {
         width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login_container {
+        width: 90%;
+        padding: 1.5em 1em;
+    }
+
+    .login_container img {
+        width: 150px;
     }
 }

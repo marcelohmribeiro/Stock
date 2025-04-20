@@ -209,6 +209,56 @@ hr {
 }
 
 /* ============ RESPONSIVIDADE ============ */
+@media (max-width: 1024px) {
+    .container {
+        padding: 10px;
+    }
+
+    .item_info img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .item_details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item_details span {
+        font-size: 16px;
+    }
+
+    .item_container {
+        max-height: none;
+    }
+
+    .cart_total {
+        width: 100%;
+    }
+
+    .cart_main {
+        flex-direction: column;
+    }
+
+    .cart_infoPrice button {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .cart_info div {
+        flex-direction: column;
+    }
+
+    .quantity {
+        flex-direction: column;
+    }
+
+    .clear {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 @media (max-width: 768px) {
     .item_info {
         flex-direction: column;
@@ -269,82 +319,5 @@ hr {
 
     .cart_info span {
         font-size: 18px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .btn,
-    .clear {
-        font-size: 16px;
-        padding: 8px 12px;
-    }
-
-    .cart_total h1 {
-        font-size: 18px;
-    }
-
-    .cart_info span {
-        font-size: 16px;
-    }
-
-    .item_info img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .quantity input {
-        max-width: 30px;
-    }
-}
-
-@media (max-width: 1024px) {
-
-    .container {
-        padding: 10px;
-    }
-
-    .item_info img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .item_details {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .item_details span {
-        font-size: 16px;
-    }
-
-    .item_container {
-        max-height: none;
-    }
-
-    .cart_total {
-        width: 100%;
-    }
-
-    .cart_main {
-        flex-direction: column;
-    }
-
-    .cart_infoPrice button {
-        width: 100%;
-        margin-top: 20px;
-    }
-
-    .cart_info div {
-        flex-direction: column;
-    }
-
-    .quantity {
-        flex-direction: column;
-    }
-
-    .clear {
-        width: 100%;
-        text-align: center;
     }
 }

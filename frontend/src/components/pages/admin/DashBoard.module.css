@@ -134,6 +134,7 @@
     background-color: #1c65c9;
 }
 
+/* ===== Modal ===== */
 .modal_overlay {
     position: fixed;
     top: 0;
@@ -147,7 +148,6 @@
     justify-content: center;
     z-index: 999;
 }
-
 
 .modal_content {
     background-color: white;
@@ -214,4 +214,66 @@
 
 .itens_container button:hover {
     background-color: #d32f2f;
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 430px) {
+    .container {
+        flex-direction: column;
+        gap: 2em;
+        padding: 0 1em;
+    }
+
+    .dashboardContainer,
+    .checkoutHistory {
+        width: 100%;
+        padding: 1em;
+    }
+
+    .titleContainer {
+        flex-direction: column;
+        gap: 1em;
+        text-align: center;
+    }
+
+    .modal_content {
+        padding: 1em;
+        max-width: 95%;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.6rem;
+        min-width: 120px;
+    }
+
+    .table button {
+        font-size: 0.9rem;
+        padding: 0.5em 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .dashboardContainer,
+    .checkoutHistory {
+        width: 90%;
+    }
+
+    .titleContainer {
+        flex-direction: column;
+        gap: 1em;
+        text-align: center;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.8rem;
+        min-width: 130px;
+    }
 }

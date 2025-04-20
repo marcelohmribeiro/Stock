@@ -207,3 +207,93 @@ hr {
     transition: 0.3s;
     background-color: #F57C00;
 }
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 768px) {
+    .item_info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .item_details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .cart_main {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cart_total {
+        width: 100%;
+    }
+
+    .cart_info {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .cart_info div {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .item_position {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn,
+    .clear {
+        width: 100%;
+        text-align: center;
+    }
+
+    .quantity {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .search_container {
+        padding: 15px;
+    }
+
+    .item_info img {
+        margin-bottom: 10px;
+    }
+
+    .cart_info span {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .btn,
+    .clear {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .cart_total h1 {
+        font-size: 18px;
+    }
+
+    .cart_info span {
+        font-size: 16px;
+    }
+
+    .item_info img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .quantity input {
+        max-width: 30px;
+    }
+}

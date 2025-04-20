@@ -16,11 +16,13 @@
     margin: auto;
 }
 
-/* ============ RESPONSIVIDADE ============ */
+/* Responsividade */
 @media (max-width: 1024px) {
     .register_container {
         width: 85%;
         padding: 2em 1.5em;
+        height: 700px;
+        margin: auto;
     }
 
     .register_container img {

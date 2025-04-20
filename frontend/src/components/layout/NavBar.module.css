@@ -103,3 +103,36 @@
 .login_container {
     margin: auto;
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .list {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .item {
+        font-size: 14px;
+    }
+
+    .profile_container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .profile_info h3 {
+        font-size: 14px;
+    }
+
+    .profile_info p {
+        font-size: 11px;
+    }
+
+    .profile_container button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+}

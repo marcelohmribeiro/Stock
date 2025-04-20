@@ -216,15 +216,27 @@
     background-color: #d32f2f;
 }
 
-/* ============ RESPONSIVIDADE ============ */
+/* Responsividade */
 @media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        gap: 2em;
+    }
+
     .dashboardContainer {
-        width: 90%;
+        width: 80%;
+        /* Mais estreito para iPad */
+        padding: 1.2em;
+        margin: auto;
+    }
+
+    .checkoutHistory {
         padding: 1.5em;
     }
 
     .dashboardContainer h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        /* Fonte menor */
     }
 
     .userList {
@@ -273,5 +285,17 @@
     .table button {
         font-size: 0.9rem;
         padding: 0.5em 1em;
+    }
+
+    .userList {
+        max-height: 300px;
+    }
+
+    .userCard {
+        padding: 0.6rem;
+    }
+
+    .btnDelete {
+        padding: 5px 10px;
     }
 }

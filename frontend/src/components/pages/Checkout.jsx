@@ -1,6 +1,7 @@
 import styles from "./Checkout.module.css"
 import Input from "../form/Input"
 import Select from "../form/Select"
+import Loading from "../layout/Loading";
 // Bibliotecas
 import { useState, useEffect, useRef } from "react"
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
@@ -8,7 +9,6 @@ import { FaRegTrashCan } from "react-icons/fa6";
 import { GiBroom } from "react-icons/gi";
 import { useAuth } from "../context/AuthContext";
 import { toast } from 'react-toastify'
-import Loading from "../layout/Loading";
 
 function Checkout() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL

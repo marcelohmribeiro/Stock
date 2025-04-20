@@ -21,8 +21,14 @@
     text-align: center;
 }
 
-
 /* Responsividade */
+@media (max-width: 1024px) {
+    .newitem_container {
+        width: 90%;
+        padding: 2em;
+    }
+}
+
 @media (max-width: 768px) {
     .newitem_container {
         width: 90%;

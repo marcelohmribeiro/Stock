@@ -38,3 +38,14 @@
         width: 180px;
     }
 }
+
+@media (max-width: 1024px) {
+    .login_container {
+        width: 85%;
+        padding: 2em 1.5em;
+    }
+
+    .login_container img {
+        width: 180px;
+    }
+}

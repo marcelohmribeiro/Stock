@@ -38,3 +38,14 @@
         width: 180px;
     }
 }
+
+@media (max-width: 1024px) {
+    .register_container {
+        width: 85%;
+        padding: 2em 1.5em;
+    }
+
+    .register_container img {
+        width: 180px;
+    }
+}

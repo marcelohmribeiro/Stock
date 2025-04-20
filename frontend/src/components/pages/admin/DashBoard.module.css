@@ -277,3 +277,33 @@
         min-width: 130px;
     }
 }
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        gap: 2em;
+        padding: 0 1em;
+    }
+
+    .dashboardContainer,
+    .checkoutHistory {
+        width: 90%;
+    }
+
+    .titleContainer {
+        flex-direction: column;
+        gap: 1em;
+        text-align: center;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.8rem;
+        min-width: 130px;
+    }
+
+    .table button {
+        font-size: 0.9rem;
+        padding: 0.5em 1em;
+    }
+}

@@ -37,6 +37,7 @@ function Stock() {
     }, [])
     // Excluir Item
     function removeItem(id) {
+        setLoading(true)
         const token = localStorage.getItem("token")
         fetch(`${backendUrl}/itens/${id}`, {
             method: 'DELETE',
@@ -48,6 +49,7 @@ function Stock() {
             .then((resp) => resp.json())
             .then(() => {
                 setItens(itens.filter((item) => item.id !== id))
+                setLoading(false)
                 toast.success("Item excluído com sucesso!")
             })
             .catch((err) => console.log(err))

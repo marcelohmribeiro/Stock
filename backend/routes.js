@@ -131,8 +131,7 @@ router.post("/login", async (req, res) => {
         // Verifica se a senha está correta
         const checkPassword = await bcrypt.compare(password, user.password)
         if (!checkPassword) {
-            console.log("Senha incorreta para o usuário:", email);
-            return res.status(401).json({ message: "Senha incorreta" })
+            return res.status(401).json({ message: "Informações invalidas" })
         }
         // Gera o token de autenticação
         const token = jwt.sign(
@@ -140,7 +139,6 @@ router.post("/login", async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         )
-        console.log("Token gerado com sucesso para o usuário:", email)
         return res.status(200).json({ user, token })
     } catch (error) {
         console.error("Erro no login:", error)
@@ -167,7 +165,6 @@ router.post('/register', async (req, res) => {
             password: hashedPassword
         })
         res.json(newUser)
-        console.log(newUser)
     } catch (err) {
         res.status(500).json({ message: "Ocorreu um erro!" })
         console.log(err)

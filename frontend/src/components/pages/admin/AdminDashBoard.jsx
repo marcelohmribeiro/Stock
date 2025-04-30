@@ -82,6 +82,7 @@ function AdminDashboard() {
     }, [backendUrl, user])
     // Deletar usuário
     const handleDeleteUser = async (userId) => {
+        setLoading(true)
         setSubmitting(true)
         if (token) {
             try {
@@ -103,6 +104,7 @@ function AdminDashboard() {
                 console.error('Erro ao excluir usuário', error)
             }
             setSubmitting(false)
+            setLoading(false)
         }
     }
     // Abrir e fechar pedido
@@ -116,6 +118,7 @@ function AdminDashboard() {
     }
     // Deleta Pedido
     const handleDeleteOrder = async (orderId) => {
+        setLoading(true)
         setSubmitting(true)
         try {
             const res = await fetch(`${backendUrl}/orders/${orderId}`, {
@@ -136,6 +139,7 @@ function AdminDashboard() {
             console.error("Erro ao excluir pedido:", err)
         }
         setSubmitting(false)
+        setLoading(false)
     }
     if (loading) return (
         <Loading txt="Carregando..." />

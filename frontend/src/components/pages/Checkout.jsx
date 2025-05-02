@@ -215,7 +215,7 @@ function Checkout() {
         }
     }
     if (loading) return (
-        <Loading txt="Enviando..."/>
+        <Loading txt="Enviando..." />
     )
     return (
         <div className={styles.container}>
@@ -266,7 +266,11 @@ function Checkout() {
                     </div>
                 )}
             </div>
-
+            {cart.length <= 0 && (
+                <div className={styles.checkout_container}>
+                    <h1>CAIXA LIVRE</h1>
+                </div>
+            )}
             <form
                 onSubmit={(e) => {
                     e.preventDefault()
